@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "PublicaPlay-UltraLight";
+  src: url('./fonts/PublicaPlay-UltraLight.ttf') format("truetype");
+}
+@font-face {
+  font-family: "PublicaPlay-Medium";
+  src: url('./fonts/PublicaPlay-Medium.ttf') format("truetype");
+}
+@font-face {
+  font-family: "PublicaPlay-UltraLightItalic";
+  src: url('./fonts/PublicaPlay-UltraLightItalic.ttf') format("truetype");
+}
+@font-face {
+  font-family: "PublicaPlay-RegularItalic";
+  src: url('./fonts/PublicaPlay-RegularItalic.ttf') format("truetype");
+}
+@font-face {
+  font-family: "PublicaPlay-BoldItalic";
+  src: url('./fonts/PublicaPlay-BoldItalic.ttf') format("truetype");
+}
+@font-face {
+  font-family: "PublicaPlay-Light";
+  src: url('./fonts/PublicaPlay-Light.ttf') format("truetype");
+                        }
+
+
+
+.header {
+  background-color    : #28a4b6;
+  top                 : 0px;
+  height              : 110px;
+  width               : 100vw;
+  position            : absolute;
+  margin              : 0;
+  left                : 0;
+  text-align          : center;
+}
+
+.homeButton {
+
+  top                 : 43px;
+  position            : absolute;
+  left: 30px;
+  color               :#ffffff;
+
+}
+
+
+
+
+.title {
+
+  top                 : 43px;
+  position            : relative;
+  font-family         : "PublicaPlay-BoldItalic", Helvetica, Arial, serif;
+  font-size           : 36px;
+  color               :#ffffff;
+
+}
