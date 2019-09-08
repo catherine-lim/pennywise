@@ -21,39 +21,73 @@
 @font-face {
   font-family: "PublicaPlay-Light";
   src: url('./fonts/PublicaPlay-Light.ttf') format("truetype");
-                        }
-
-
+}
 
 .header {
+  position            : relative;
   background-color    : #28a4b6;
   top                 : 0px;
+  left                : 0;
   height              : 110px;
   width               : 100vw;
-  position            : absolute;
-  margin              : 0;
-  left                : 0;
+  margin              : 0px;
   text-align          : center;
 }
 
-.homeButton {
-
+.home-button {
   top                 : 43px;
   position            : absolute;
-  left: 30px;
+  left                : 30px;
   color               :#ffffff;
-
 }
 
-
-
-
-.title {
-
+.hdr-title {
   top                 : 43px;
   position            : relative;
   font-family         : "PublicaPlay-BoldItalic", Helvetica, Arial, serif;
   font-size           : 36px;
   color               :#ffffff;
+}
 
+.container {
+  display: flexbox;
+  align-content: center;
+}
+
+.goal-card {
+  display             :flex;
+  position            : relative;
+  margin              : auto;
+  width               : 327px;
+  height              : 152px;
+  font-family         : "PublicaPlay-UltraLight", Helvetica, Arial, serif;
+  font-size           : 36.0px;
+  color               : #ffffff;
+}
+
+.teal {
+  background          : linear-gradient(to left, #182664, #2cc0c8);
+}
+
+.pink {
+  background-image: linear-gradient(to left, #ff5cf7, #e57c65 100%);
+}
+
+.orange {
+  background-image: linear-gradient(to left, #dd003d, #f36a04 51%, #ffde02);
+}
+
+
+
+.gc-title {
+  margin: auto;
+}
+
+.daily-goal {
+  position            : absolute;
+  bottom              : 10px;
+  right               : 20px;
+  font-family         : "PublicaPlay-UltraLight", Helvetica, Arial, serif;
+  font-size           : 26.0px;
+  color               :#ffffff;
 }
