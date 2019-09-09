@@ -55,7 +55,7 @@
 }
 
 .goal-card {
-  display             :flex;
+  display             : flex;
   position            : relative;
   margin              : auto;
   width               : 327px;
@@ -70,13 +70,16 @@
 }
 
 .pink {
-  background-image: linear-gradient(to left, #ff5cf7, #e57c65 100%);
+  background-image    : linear-gradient(to left, #ff5cf7, #e57c65 100%);
 }
 
 .orange {
-  background-image: linear-gradient(to left, #dd003d, #f36a04 51%, #ffde02);
+  background-image    : linear-gradient(to left, #dd003d, #f36a04 51%, #ffde02);
 }
 
+.gray {
+  background-image    : linear-gradient(to left, #363535, #cccccc);
+}
 
 
 .gc-title {

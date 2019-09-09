@@ -25,7 +25,12 @@ export default class Home extends React.Component {
           'dailyGoal': 786,
           'isCompleted': false
         }
-      ]
+      ],
+      colorLoop: {
+        'teal': 'pink',
+        'pink': 'orange',
+        'orange': 'teal'
+      }
     };
   }
 
@@ -37,19 +42,31 @@ export default class Home extends React.Component {
   }
 
   render() {
+    this.currentColor = 'teal';
     const goalList = this.state.goals.map(goalData => {
+      this.goalCard = <GoalCard
+        key={goalData.id}
+        id={goalData.id}
+        name={goalData.name}
+        dailyGoal={this.inDollars(goalData.dailyGoal)}
+        isCompleted={goalData.isCompleted}
+        colorClass={this.currentColor}/>;
+      this.currentColor = this.state.colorLoop[this.currentColor];
+
       return (
-        <GoalCard key={goalData.id}
-          id={goalData.id}
-          name={goalData.name}
-          dailyGoal={this.inDollars(goalData.dailyGoal)}
-          isCompleted={goalData.isCompleted}
-        />
+        this.goalCard
       );
     });
+
     return (
       <React.Fragment>
+
         {goalList}
+
+        <div className={`goal-card gray`}>
+          <span className="gc-title">Completed</span>
+        </div>
+
       </React.Fragment>
     );
   }
@@ -79,3 +96,7 @@ export default class Home extends React.Component {
 //       );
 //   }
 // }
+
+// colorClass: ['teal',
+//   'pink',
+//   'orange'],
