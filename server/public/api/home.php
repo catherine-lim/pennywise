@@ -8,13 +8,10 @@ set_error_handler('error_handler');
 
 require_once('./db_connection.php');
 
-if(empty($_GET['goal_id'])) {
-    $whereClause = '';
-} 
-else if (!is_numeric($_GET['goal_id'])) {
-    throw new Exception("id needs to be a number");
-} 
-else {
-    $whereClause = "WHERE goal_details.goal_id = {$_GET['goal_id']}";
-}
+$query = 
+
+    "SELECT `goal_id`, `goal_name`, `savings_target`, `goal_completion_date`, `current_saving`, `is_completed` 
+    FROM goal_details ORDER BY `is_completed`" ;
+
+
   
