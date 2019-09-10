@@ -13,5 +13,13 @@ $query =
     "SELECT `goal_id`, `goal_name`, `savings_target`, `goal_completion_date`, `current_saving`, `is_completed` 
     FROM goal_details ORDER BY `is_completed`" ;
 
+$result = mysqli_query($conn, $query);
 
+$output = array();
+
+while ($row = mysqli_fetch_assoc($result)) {
+  $output[] = $row;
+};
+
+print(json_encode($output));
   
