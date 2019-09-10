@@ -9,7 +9,7 @@ require_once('./db_connection.php');
 
 startup();
 
-$query = "SELECT * FROM `transaction_history`";
+$query = "SELECT * FROM `goal_details`";
 
 $result = mysqli_query($conn, $query);
 
@@ -24,7 +24,5 @@ while ($row = mysqli_fetch_assoc($result)) {
 };
 
 print(json_encode($output));
-
-?>
 
 ?>
