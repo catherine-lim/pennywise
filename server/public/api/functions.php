@@ -11,5 +11,8 @@ function error_handler($error) {
     print($json_output);
 }
 
+function startup() {
+    header('Content-Type: application/json');
+}
 
 ?>
