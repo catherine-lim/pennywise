@@ -15,6 +15,10 @@ $query =
 
 $result = mysqli_query($conn, $query);
 
+if(!mysqli_num_rows($result)) {
+    throw new Exception('Invalid ID: '.$id);
+}
+
 $output = array();
 
 while ($row = mysqli_fetch_assoc($result)) {
