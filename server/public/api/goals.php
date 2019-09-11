@@ -1,17 +1,14 @@
 <?php
 
+require_once('./db_connection.php');
 require_once('./functions.php');
-
 set_exception_handler('error_handler');
 startup();
 set_error_handler('error_handler');
 
-require_once('./db_connection.php');
 
 if (empty($_GET['goal_id'])) {
   $whereClause = '';
-} else if (!is_numeric($_GET['goal_id'])) {
-  throw new Exception("id needs to be a number");
 } else {
   $whereClause = "WHERE goal_details.goal_id = {$_GET['goal_id']}";
 }
@@ -50,15 +47,6 @@ while ($row = mysqli_fetch_assoc($result)) {
       "transaction_history" => json_decode($row['transactions'])
     ];
   }
-  unset($row["goal_id"]);
-  unset($row["goal_name"]);
-  unset($row["saving_target"]);
-  unset($row["goal_start_date"]);
-  unset($row["goal_completion_date"]);
-  unset($row["goal_achieved_date"]);
-  unset($row["is_completed"]);
-  unset($row["current_saving"]);
-  unset($row["savings_target"]);
 }
 
 
