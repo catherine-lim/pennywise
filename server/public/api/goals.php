@@ -45,7 +45,5 @@ while ( $row = mysqli_fetch_assoc( $result ) ) {
     ];
   }
 }
-
 print(json_encode( $output ));
-
 ?>
