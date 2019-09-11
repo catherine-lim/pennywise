@@ -6,32 +6,61 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      goals: [
-        {
-          'id': 1,
-          'name': 'Santorini Trip',
-          'dailyGoal': 1043,
-          'isCompleted': false
-        },
-        {
-          'id': 2,
-          'name': 'Macbook Pro',
-          'dailyGoal': 950,
-          'isCompleted': false
-        },
-        {
-          'id': 3,
-          'name': 'Suit for Work',
-          'dailyGoal': 786,
-          'isCompleted': false
-        }
-      ],
-      colorLoop: {
-        'teal': 'pink',
-        'pink': 'orange',
-        'orange': 'teal'
-      }
+      goals: []
     };
+
+    this.colors = ['teal', 'pink', 'orange'];
+    this.differenceInDays = this.differenceInDays.bind(this);
+    this.todaysDate = this.todaysDate.bind(this);
+    this.dailyGoal = this.dailyGoal.bind(this);
+    this.generateCards = this.generateCards.bind(this);
+  }
+
+  componentDidMount() {
+    this.getGoals();
+  }
+
+  getGoals() {
+    fetch(`/api/home.php`)
+      .then(res => res.json())
+      .then(response => this.setState({ goals: response }));
+  }
+
+  generateCards() {
+    const goalList = this.state.goals.map((goalData, index) => {
+      return <GoalCard
+        key={goalData.goal_id}
+        id={goalData.goal_id}
+        name={goalData.goal_name}
+        completionDate ={goalData.goal_completion_date}
+        savingsTarget = {goalData.savings_target}
+        currentSavings = {goalData.current_savings}
+        dailyGoal={this.dailyGoal(index)}
+        isCompleted={goalData.isCompleted}
+        color={this.colors[index % this.colors.length]}/>;
+    });
+    return (goalList);
+  }
+
+  todaysDate() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '/' + mm + '/' + dd;
+    return (today);
+  }
+
+  differenceInDays(i) {
+
+    const todayDate = new Date(this.todaysDate());
+    var goalDate = new Date(this.state.goals[i].goal_completion_date);
+    var MS_IN_A_DAY = 86400000;
+    var todayDateInMS = Date.UTC(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate());
+    var goalDateInMS = Date.UTC(goalDate.getFullYear(), goalDate.getMonth(), goalDate.getDate());
+    return (Math.floor((goalDateInMS - todayDateInMS) / MS_IN_A_DAY));
+
   }
 
   inDollars(value) {
@@ -41,62 +70,26 @@ export default class Home extends React.Component {
     }).format(value / 100);
   }
 
-  render() {
-    this.currentColor = 'teal';
-    const goalList = this.state.goals.map(goalData => {
-      this.goalCard = <GoalCard
-        key={goalData.id}
-        id={goalData.id}
-        name={goalData.name}
-        dailyGoal={this.inDollars(goalData.dailyGoal)}
-        isCompleted={goalData.isCompleted}
-        colorClass={this.currentColor}/>;
-      this.currentColor = this.state.colorLoop[this.currentColor];
+  dailyGoal(i) {
+    var daysLeft = this.differenceInDays(i);
 
-      return (
-        this.goalCard
-      );
-    });
+    var amountLeftToSave = this.state.goals[i].savings_target - this.state.goals[i].current_savings;
+    var dailyGoal = amountLeftToSave / daysLeft;
+    return (this.inDollars(dailyGoal));
+  }
+
+  render() {
 
     return (
       <React.Fragment>
 
-        {goalList}
+        {this.generateCards()}
 
         <div className={`goal-card gray`}>
-          <span className="gc-title">Completed</span>
+          <span className="goal-card-title">Completed</span>
         </div>
 
       </React.Fragment>
     );
   }
 }
-
-// renderView() {
-//   switch (this.state.goals.id % 3) {
-//     case '0':
-//       return (
-//         <ProductList
-//           setView={this.setView} />
-//       );
-
-//     case '1':
-//       return (
-//         <ProductDetails
-//           id={this.state.view.params.id}
-//           setView={this.setView}
-//           addToCart={this.addToCart} />
-//       );
-
-//     case '2':
-//       return (
-//         <CartSummary
-//           cartArray={this.state.cart}
-//           view={this.setView} />
-//       );
-//   }
-// }
-
-// colorClass: ['teal',
-//   'pink',
-//   'orange'],
