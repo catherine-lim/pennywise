@@ -13,7 +13,6 @@ export default class App extends React.Component {
       }
     };
     this.setView = this.setView.bind(this);
-    this.saveGoal = this.saveGoal.bind(this);
   }
   setView(name, params) {
     this.setState({ view: {
@@ -34,7 +33,7 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <Header setView={this.setView}/>
-          <CreateGoal setView={this.setView} saveGoal={this.saveGoal}/>
+          <CreateGoal setView={this.setView} saveGoal={this.props.saveGoal}/>
         </React.Fragment>
       );
     }

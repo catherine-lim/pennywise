@@ -19,7 +19,7 @@ export default class CreateGoal extends React.Component {
     event.preventDefault();
   }
   saveGoal() {
-    fetch('/api/goals.php', {
+    fetch('/api/create-goal.php', {
       method: 'POST',
       body: JSON.stringify({
         goal_name: this.state.Goal_Name,
