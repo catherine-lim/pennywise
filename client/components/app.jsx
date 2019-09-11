@@ -13,25 +13,13 @@ export default class App extends React.Component {
       }
     };
     this.setView = this.setView.bind(this);
-    this.saveGoalToDetail = this.saveGoalToDetail.bind(this);
+    this.saveGoal = this.saveGoal.bind(this);
   }
   setView(name, params) {
     this.setState({ view: {
       name: name,
       params: params
     } });
-  }
-  saveGoalToDetail() {
-    fetch('/api/goals.php', {
-      method: 'POST',
-      body: JSON.stringify(),
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(response => response.json())
-      .then(data => this.setState({ view: {
-        name: 'onboarding',
-        params: {}
-      } }));
   }
 
   render() {
@@ -46,7 +34,7 @@ export default class App extends React.Component {
       return (
         <React.Fragment>
           <Header setView={this.setView}/>
-          <CreateGoal setView={this.setView} saveGoal={this.saveGoalToDetail}/>
+          <CreateGoal setView={this.setView} saveGoal={this.saveGoal}/>
         </React.Fragment>
       );
     }

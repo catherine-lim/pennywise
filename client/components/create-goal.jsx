@@ -3,7 +3,12 @@ import React from 'react';
 export default class CreateGoal extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      Goal_Name: '',
+      Savings_Target: '',
+      Current_Saving: '',
+      Goal_Completion_Date: ''
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -13,6 +18,21 @@ export default class CreateGoal extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
   }
+  saveGoal() {
+    fetch('/api/goals.php', {
+      method: 'POST',
+      body: JSON.stringify({
+        goal_name: this.state.Goal_Name,
+        savings_target: this.state.Savings_Target,
+        current_saving: this.state.Current_Saving,
+        goal_completion_date: this.state.Goal_Completion_Date
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(response => response.json());
+
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -45,7 +65,7 @@ export default class CreateGoal extends React.Component {
         </form>
 
         <button type="submit" className="saveGoalButton"
-          onClick={() => this.props.setView('goaldetail', {})}> <p>Save</p> </button>
+          onClick={() => this.props.setView('home', {})}> <p>Save</p> </button>
 
       </React.Fragment>
     );
