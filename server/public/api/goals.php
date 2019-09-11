@@ -1,17 +1,13 @@
 <?php
 
-require_once('./functions.php');
-
-set_exception_handler('error_handler');
+require_once( './functions.php' );
+require_once( './db_connection.php' );
 startup();
-set_error_handler('error_handler');
+set_exception_handler( 'error_handler' );
+set_error_handler( 'error_handler' );
 
-require_once('./db_connection.php');
-
-if (empty($_GET['goal_id'])) {
+if ( empty( $_GET['goal_id'] ) ) {
   $whereClause = '';
-} else if (!is_numeric($_GET['goal_id'])) {
-  throw new Exception("id needs to be a number");
 } else {
   $whereClause = "WHERE goal_details.goal_id = {$_GET['goal_id']}";
 }
@@ -27,17 +23,15 @@ $query =
   JOIN transaction_history ON goal_details.goal_id = transaction_history.goal_id
   {$whereClause}";
 
-$result = mysqli_query($conn, $query);
-
-if(!$result){
-  throw new Exception(mysqli_connect_error());
+$result = mysqli_query( $conn, $query );
+if( !$result ){
+  throw new Exception( mysqli_connect_error() );
 }
 
 $output = [];
-
-while ($row = mysqli_fetch_assoc($result)) {
+while ( $row = mysqli_fetch_assoc( $result ) ) {
   $goal_id = $row['goal_id'];
-  if (!isset($output[$goal_id])) {
+  if ( !isset( $output[$goal_id] ) ) {
     $output[] = [
       "goal_id" => $row["goal_id"],
       "goal_name" => $row["goal_name"],
@@ -47,21 +41,11 @@ while ($row = mysqli_fetch_assoc($result)) {
       "goal_achieved_date" => $row["goal_achieved_date"],
       "current_saving" => $row["current_saving"],
       "is_completed" => $row["is_completed"],
-      "transaction_history" => json_decode($row['transactions'])
+      "transaction_history" => json_decode( $row['transactions'] )
     ];
   }
-  unset($row["goal_id"]);
-  unset($row["goal_name"]);
-  unset($row["saving_target"]);
-  unset($row["goal_start_date"]);
-  unset($row["goal_completion_date"]);
-  unset($row["goal_achieved_date"]);
-  unset($row["is_completed"]);
-  unset($row["current_saving"]);
-  unset($row["savings_target"]);
 }
+$output = $output[0];
 
-
-print(json_encode($output));
-
+print(json_encode( $output ));
 ?>
