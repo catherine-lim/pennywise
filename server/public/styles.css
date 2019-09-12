@@ -22,6 +22,9 @@
   font-family: "PublicaPlay-Light";
   src: url('./fonts/PublicaPlay-Light.ttf') format("truetype");
 }
+body {
+  margin: 0;
+}
 
 body {
   margin: 0;
