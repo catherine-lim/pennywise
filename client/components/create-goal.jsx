@@ -4,33 +4,32 @@ export default class CreateGoal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Goal_Name: '',
-      Savings_Target: '',
-      Current_Saving: '',
-      Goal_Completion_Date: ''
+      goal_name: '',
+      savings_target: '',
+      current_saving: '',
+      goal_completion_date: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
     event.preventDefault();
+    this.setState({
+      [event.currentTarget.name]: event.currentTarget.value
+    });
   }
   handleSubmit(event) {
     event.preventDefault();
+    this.saveGoal();
   }
   saveGoal() {
     fetch('/api/create-goal.php', {
       method: 'POST',
-      body: JSON.stringify({
-        goal_name: this.state.Goal_Name,
-        savings_target: this.state.Savings_Target,
-        current_saving: this.state.Current_Saving,
-        goal_completion_date: this.state.Goal_Completion_Date
-      }),
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(this.state)
+
     })
       .then(response => response.json());
-
   }
 
   render() {
@@ -41,31 +40,28 @@ export default class CreateGoal extends React.Component {
 
             <label className="secondStatement">What are you saving for ?</label>
             <br></br>
-            <input type="text" name="goal"onChange={this.handleChange} id="goal" className="form-control" placeholder="Example : Computer" />
+            <input type="text" name="goal_name" value={this.state.goal_name} onChange={this.handleChange} id="goal_name" className="form-control" placeholder="Example : Computer" />
           </div>
 
           <div className="form-group">
             <label className="secondStatement">How much does it cost?</label>
             <br></br>
-            <input type="text" name="cost" onChange={this.handleChange} id="cost" className="form-control" placeholder="100" />
+            <input type="text" name="savings_target" value={this.state.savings_target} onChange={this.handleChange} id="savings_target" className="form-control" placeholder="100" />
           </div>
 
           <div className="form-group">
             <label className="secondStatement">How much are you starting with?</label>
             <br></br>
-            <input type="text" name="initialMoney" onChange={this.handleChange} id="initialMoney" className="form-control" placeholder="10" />
+            <input type="text" name="current_saving" value={this.state.current_saving} onChange={this.handleChange} id="current_saving" className="form-control" placeholder="10" />
           </div>
 
           <div className="form-group">
             <label className="secondStatement">When do you need it by?</label>
             <br></br>
-            <input type="date" name="dayLeft" onChange={this.handleChange} id="dayLeft" className="form-control" />
+            <input type="date" name="goal_completion_date" value={this.state.goal_completion_date} onChange={this.handleChange} id="goal_completion_date" className="form-control" />
           </div>
-
+          <button type="submit" name="submit" className="saveGoalButton"> <p>Save</p> </button>
         </form>
-
-        <button type="submit" className="saveGoalButton"
-          onClick={() => this.props.setView('home', {})}> <p>Save</p> </button>
 
       </React.Fragment>
     );

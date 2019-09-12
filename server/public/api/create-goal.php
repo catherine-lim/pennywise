@@ -26,9 +26,10 @@ $result = mysqli_query($conn, $query);
 
 
 if ($result) {
-    echo "New record created successfully";
+    print(json_encode(['message'=>"New record created successfully"]));
 } else {
-    echo "Error: " . $query . "<br>" . mysqli_error($conn);
+    http_response_code(500);
+    print(json_encode(['error'=>mysqli_error($conn)]));
 }
 
 ?>

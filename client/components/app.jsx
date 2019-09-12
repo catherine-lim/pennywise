@@ -13,6 +13,7 @@ export default class App extends React.Component {
       }
     };
     this.setView = this.setView.bind(this);
+
   }
   setView(name, params) {
     this.setState({ view: {
