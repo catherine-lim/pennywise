@@ -10,8 +10,8 @@ export default class GoalDetails extends React.Component {
     };
 
     this.differenceInDays = this.differenceInDays.bind(this);
-    // this.todaysDate = this.todaysDate.bind(this);
-    // this.dailyGoal = this.dailyGoal.bind(this);
+    this.todaysDate = this.todaysDate.bind(this);
+    this.dailyGoal = this.dailyGoal.bind(this);
 
   }
 
@@ -29,20 +29,26 @@ export default class GoalDetails extends React.Component {
       .then(res => res.json())
       // eslint-disable-next-line no-console
 
-      .then(response => this.setState({ goal: response }));
+      .then(response => this.setState({ goal: response }))
+      .then(this.dailyGoal());
+
+    // this.todaysDate();
+    // this.dailyGoal();
 
   }
 
-  dailyGoal(goalData, index) {
-    const daysLeft = this.differenceInDays();
-    const target = this.state.goal.savings_target;
-    const currentSaved = this.state.goal.current_saving;
-    const amountLeftToSave =
+  dailyGoal() {
+    var daysLeft = this.differenceInDays();
+    var target = this.state.goal.savings_target;
+    var currentSaved = this.state.goal.current_saving;
+    var amountLeftToSave =
       target - currentSaved;
-    const dailyGoal = amountLeftToSave / daysLeft;
-    this.setState({ dailyGoal: this.inDollars(dailyGoal) });
-    const daysToWeeks = daysLeft / 7;
-    const weeklyGoal = amountLeftToSave / daysToWeeks.toFixed(1);
+    var newDailyGoal = amountLeftToSave / daysLeft;
+
+    this.setState({ dailyGoal: this.inDollars(newDailyGoal) });
+
+    var daysToWeeks = daysLeft / 7;
+    var weeklyGoal = amountLeftToSave / daysToWeeks.toFixed(1);
     this.setState({ weeklyGoal: this.inDollars(weeklyGoal) });
   }
 
@@ -76,7 +82,9 @@ export default class GoalDetails extends React.Component {
       goalDate.getDate()
     );
     // eslint-disable-next-line no-console
-
+    console.log('difference in days', Math.floor(
+      (goalDateInMS - todayDateInMS) / MS_IN_A_DAY
+    ));
     return Math.floor(
       (goalDateInMS - todayDateInMS) / MS_IN_A_DAY
     );
