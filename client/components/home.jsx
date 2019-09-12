@@ -1,5 +1,6 @@
 import React from 'react';
 import GoalCard from './goal-card';
+import { dailyGoal } from './helper.js';
 
 export default class Home extends React.Component {
 
@@ -10,9 +11,8 @@ export default class Home extends React.Component {
     };
 
     this.colors = ['teal', 'pink', 'orange'];
-    this.differenceInDays = this.differenceInDays.bind(this);
-    this.todaysDate = this.todaysDate.bind(this);
-    this.dailyGoal = this.dailyGoal.bind(this);
+    // this.differenceInDays = this.differenceInDays.bind(this);
+    // this.dailyGoal = this.dailyGoal.bind(this);
     this.generateCards = this.generateCards.bind(this);
   }
 
@@ -32,50 +32,14 @@ export default class Home extends React.Component {
         key={goalData.goal_id}
         id={goalData.goal_id}
         name={goalData.goal_name}
-        completionDate ={goalData.goal_completion_date}
-        savingsTarget = {goalData.savings_target}
-        currentSavings = {goalData.current_savings}
-        dailyGoal={this.dailyGoal(index)}
+        completionDate={goalData.goal_completion_date}
+        savingsTarget={goalData.savings_target}
+        currentSavings={goalData.current_savings}
+        dailyGoal={dailyGoal(goalData)}
         isCompleted={goalData.isCompleted}
         color={this.colors[index % this.colors.length]}/>;
     });
     return (goalList);
-  }
-
-  todaysDate() {
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
-    var yyyy = today.getFullYear();
-
-    today = yyyy + '/' + mm + '/' + dd;
-    return (today);
-  }
-
-  differenceInDays(i) {
-
-    const todayDate = new Date(this.todaysDate());
-    var goalDate = new Date(this.state.goals[i].goal_completion_date);
-    var MS_IN_A_DAY = 86400000;
-    var todayDateInMS = Date.UTC(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate());
-    var goalDateInMS = Date.UTC(goalDate.getFullYear(), goalDate.getMonth(), goalDate.getDate());
-    return (Math.floor((goalDateInMS - todayDateInMS) / MS_IN_A_DAY));
-
-  }
-
-  inDollars(value) {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(value / 100);
-  }
-
-  dailyGoal(i) {
-    var daysLeft = this.differenceInDays(i);
-
-    var amountLeftToSave = this.state.goals[i].savings_target - this.state.goals[i].current_savings;
-    var dailyGoal = amountLeftToSave / daysLeft;
-    return (this.inDollars(dailyGoal));
   }
 
   render() {
