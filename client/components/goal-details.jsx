@@ -1,120 +1,46 @@
 import React from 'react';
+import GoalCard from 'goal-card';
+import { dailyGoal } from './helper.js';
 
 export default class GoalDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dailyGoal: null,
-      weeklyGoal: null,
       goal: []
     };
-
-    this.differenceInDays = this.differenceInDays.bind(this);
-    this.todaysDate = this.todaysDate.bind(this);
-    this.dailyGoal = this.dailyGoal.bind(this);
+    this.getGoal = this.getGoal.bind(this);
 
   }
 
-  // componentDidMount() {
-  // this.todaysDate();
-  // this.dailyGoal();
+  componentDidMount(props) {
+    this.getGoal();
+  }
 
-  //   // eslint-disable-next-line no-console
-  //   console.log(this.differenceInDays());
+  // getDayRemaining() {
+  //   var days = differenceInDays(this.state.goal);
   // }
 
-  componentDidMount(props) {
+  getGoal() {
     // const currentParam = this.props.params.id;
     fetch(`/api/goals.php?goal_id=3`)
       .then(res => res.json())
-      // eslint-disable-next-line no-console
-
-      .then(response => this.setState({ goal: response }))
-      .then(this.dailyGoal());
-
-    // this.todaysDate();
-    // this.dailyGoal();
-
-  }
-
-  dailyGoal() {
-    var daysLeft = this.differenceInDays();
-    var target = this.state.goal.savings_target;
-    var currentSaved = this.state.goal.current_saving;
-    var amountLeftToSave =
-      target - currentSaved;
-    var newDailyGoal = amountLeftToSave / daysLeft;
-
-    this.setState({ dailyGoal: this.inDollars(newDailyGoal) });
-
-    var daysToWeeks = daysLeft / 7;
-    var weeklyGoal = amountLeftToSave / daysToWeeks.toFixed(1);
-    this.setState({ weeklyGoal: this.inDollars(weeklyGoal) });
-  }
-
-  todaysDate() {
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
-    var yyyy = today.getFullYear();
-
-    today = yyyy + '/' + mm + '/' + dd;
     // eslint-disable-next-line no-console
-
-    return (today);
+      .then(response => this.setState({ goal: response }));
   }
 
-  differenceInDays(index) {
-    const todayDate = new Date(this.todaysDate());
-    var goalDate = new Date(
-      this.state.goal.goal_completion_date
-    );
-
-    var MS_IN_A_DAY = 86400000;
-    var todayDateInMS = Date.UTC(
-      todayDate.getFullYear(),
-      todayDate.getMonth(),
-      todayDate.getDate()
-    );
-    var goalDateInMS = Date.UTC(
-      goalDate.getFullYear(),
-      goalDate.getMonth(),
-      goalDate.getDate()
-    );
-    // eslint-disable-next-line no-console
-    console.log('difference in days', Math.floor(
-      (goalDateInMS - todayDateInMS) / MS_IN_A_DAY
-    ));
-    return Math.floor(
-      (goalDateInMS - todayDateInMS) / MS_IN_A_DAY
-    );
-  }
-
-  inDollars(value) {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(value / 100);
-  }
-
-  render() {
-
-    const goal = this.state.goal;
+  render(goalData) {
     return (
       <React.Fragment>
-        <div className="daysRemaining">{this.differenceInDays()} <span className="Days">days</span> </div>
-        <div className="goal-card teal"><span className="goal-card-title">{goal.goal_name}</span></div>
-        <div className="-toward-6000">
-          {this.state.goal.current_saving} towards {goal.savings_target}
-        </div>
-        <div>
-          <div className="dailyGoal">{goal.dailyGoal} </div>
-          <div className="day">/day</div>
-        </div>
-        <div>
-          <div className="weeklyGoal">{goal.weeklyGoal}</div>
-          <div className="week">/week</div>
-        </div>
+        return <GoalCard
+          key={goalData.goal_id}
+          id={goalData.goal_id}
+          name={goalData.goal_name}
+          completionDate={goalData.goal_completion_date}
+          savingsTarget={goalData.savings_target}
+          currentSavings={goalData.current_savings}
+          dailyGoal={dailyGoal(goalData)}
+          isCompleted={goalData.isCompleted}/>
+
       </React.Fragment>
     );
   }
