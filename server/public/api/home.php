@@ -12,7 +12,7 @@ require_once('./db_connection.php');
 
 $query = 
 
-    "SELECT `goal_id`, `goal_name`, `savings_target`, `goal_completion_date`, `current_saving`, `is_completed` 
+    "SELECT `goal_id`, `goal_name`, `savings_target`, `goal_completion_date`, `current_savings`, `is_completed` 
     FROM goal_details ORDER BY `is_completed`" ;
 
 $result = mysqli_query($conn, $query);

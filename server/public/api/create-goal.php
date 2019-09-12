@@ -16,11 +16,11 @@ $obj = json_decode($json_input, true);
 
 $goal_name = $obj['goal_name'];
 $savings_target = $obj['savings_target'];
-$current_saving = $obj['current_saving'];
+$current_savings = $obj['current_savings'];
 $goal_completion_date = $obj['goal_completion_date'];
 
-$query = "INSERT INTO goal_details (goal_name, savings_target, goal_start_date, goal_completion_date, current_saving, is_completed)
-VALUES('$goal_name', '$savings_target', now(), '$goal_completion_date', '$current_saving', 0)";
+$query = "INSERT INTO goal_details (goal_name, savings_target, goal_start_date, goal_completion_date, current_savings, is_completed)
+VALUES('$goal_name', '$savings_target', now(), '$goal_completion_date', '$current_savings', 0)";
 
 $result = mysqli_query($conn, $query);
 

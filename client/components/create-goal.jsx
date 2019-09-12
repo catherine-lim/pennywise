@@ -6,7 +6,7 @@ export default class CreateGoal extends React.Component {
     this.state = {
       goal_name: '',
       savings_target: '',
-      current_saving: '',
+      current_savings: '',
       goal_completion_date: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -52,7 +52,7 @@ export default class CreateGoal extends React.Component {
           <div className="form-group">
             <label className="secondStatement">How much are you starting with?</label>
             <br></br>
-            <input type="text" name="current_saving" value={this.state.current_saving} onChange={this.handleChange} id="current_saving" className="form-control" placeholder="10" />
+            <input type="text" name="current_savings" value={this.state.current_savings} onChange={this.handleChange} id="current_savings" className="form-control" placeholder="10" />
           </div>
 
           <div className="form-group">
