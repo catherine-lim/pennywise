@@ -245,14 +245,14 @@ body {
   margin-top: 90px;
 } */
 
-.add-button {
+/* .add-button {
   position: relative;
   width: 56px;
   height: 56px;
   border-radius: 50%;
   margin-top: 90px;
   background-color: #ff0083;
-  margin-left: -73px;
+  margin-left: -73px; */
 
 }
 .subtract-button {
@@ -347,4 +347,3 @@ input[type=text],input[type=number]{
   border-bottom: 1px solid #e0e0e0;
   text-align: center;
 }
-

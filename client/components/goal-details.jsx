@@ -17,7 +17,7 @@ export default class GoalDetails extends React.Component {
 
   getGoal() {
     // const currentParam = this.props.params.id;
-    fetch(`/api/goals.php?goal_id=3`)
+    fetch(`/api/goals.php?goal_id=4`)
       .then(res => res.json())
     // eslint-disable-next-line no-console
       .then(response => this.setState({ goal: response }));
