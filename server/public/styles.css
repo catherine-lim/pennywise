@@ -31,10 +31,8 @@ body {
   position            : relative;
   background-color    : #28a4b6;
   top                 : 0px;
-  left                : 0;
   height              : 110px;
   width               : 100vw;
-  margin              : 0px;
   text-align          : center;
 }
 
@@ -58,7 +56,7 @@ body {
   align-content: center;
 }
 
-.goal-card {
+.goal-card{
   display             : flex;
   position            : relative;
   margin              : auto;
@@ -108,6 +106,7 @@ body {
 }
 
 .-toward-6000 {
+  margin-left: 25px;
   width: 261px;
   height: 20px;
  font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
@@ -149,6 +148,7 @@ body {
   color: #2cc0c8;
 }
 
+
  .dailyGoal, .weeklyGoal {
   width: 188px;
   height: 33px;
@@ -161,6 +161,7 @@ body {
   letter-spacing: normal;
   text-align: center;
   color: #2cc0c8;
+  overflow: hidden;
 }
 
 .day, .week {
@@ -177,11 +178,173 @@ body {
   color: #2cc0c8;
 }
 
- /* .weeklyGoal{
-  float: left;
+ .weeklyGoal{
+  float: right;
 
 }
 
 .dailyGoal {
-  float: right;
+  float: left;
+}
+
+.progressBar {
+
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-top: 10px;
+
+}
+
+.background {
+  margin-top: 4px;
+  width: 327px;
+  height: 20px;
+  background-color: #acabab;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.Green {
+  width: 195.4px;
+  height: 20px;
+  background-color: #00ff00;
+}
+
+.add-or-remove-funds {
+
+  width: 375px;
+  height: 24px;
+  font-family: PublicaPlay;
+  font-size: 22px;
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #a9a9a9;
+}
+
+.Line {
+  width: 327px;
+  height: 2px;
+  background-color: #e0e0e0;
+}
+
+.Line2 {
+  width: 179px;
+  height: 2px;
+  background-color: #e0e0e0;
+
+
+/* .add-button, .subtract-button {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-top: 90px;
 } */
+
+.add-button {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-top: 90px;
+  background-color: #ff0083;
+  margin-left: -73px;
+
+}
+.subtract-button {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-top: 90px;
+  background-color: #2cc0c8;
+  margin-left: 20px;
+}
+
+.Transaction-History {
+  width: 375px;
+  height: 24px;
+  font-family: PublicaPlay;
+  font-size: 22px;
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #a9a9a9;
+}
+
+.onBoarding{
+  position            : relative;
+  margin              : auto;
+  width               : 327px;
+  height              : 152px;
+}
+.someStatement{
+  width: 320px;
+  height: 107px;
+  font-family: "PublicaPlay-Medium", Helvetica, Arial, serif;
+  font-size: 48px;
+  font-style: italic;
+  color: #2cc0c8;
+}
+
+.secondStatement{
+  width: 328px;
+  height: 21px;
+  font-family: "PublicaPlay-UltraLightItalic", Helvetica, Arial, serif;
+  font-size: 18px;
+  font-weight: 200;
+  font-style: italic;
+  color: #2cc0c8;
+}
+.getStartedNow{
+  width: 158px;
+  height: 21px;
+  font-family: "PublicaPlay-Medium", Helvetica, Arial, serif;
+  font-size: 18px;
+  font-weight: 500;
+  font-style: normal;
+  color: #2cc0c8;
+}
+.getStartedButton{
+  width: 328px;
+  height: 92px;
+  border: solid 2px #2cc0c8;
+  font-family: "PublicaPlay-UltraLight",Helvetica, Arial, serif;
+  font-size: 36px;
+  font-weight: 200;
+  text-align: center;
+  color: #2cc0c8;
+}
+.form-group{
+  display             : block;
+  position            : relative;
+  margin              : auto;
+  text-align          : center;
+  padding:50px;
+}
+.saveGoalButton{
+  float:right;
+  font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
+  width: 103px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: 200;
+  text-align: center;
+  background-color: #2cc0c8;
+  color: #ffffff;
+}
+input[type=text],input[type=number]{
+  background: transparent;
+  width: 317px;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+}
+
