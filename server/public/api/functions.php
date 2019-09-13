@@ -2,7 +2,7 @@
 
 function error_handler($error) {
     $output = array(
-        "Sucesss" => false,
+        "Success" => false,
         "error" => $error -> getMessage()
     );
 
@@ -14,5 +14,5 @@ function error_handler($error) {
 function startup() {
     header('Content-Type: application/json');
 }
-
+ 
 ?>

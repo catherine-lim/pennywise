@@ -14,6 +14,7 @@ if ( empty( $_GET['goal_id'] ) ) {
 
 $query =
 
+
 "SELECT goal_details.goal_id, goal_details.goal_name,
 goal_details.savings_target, goal_details.goal_start_date,
 goal_details.goal_completion_date, goal_details.goal_achieved_date,
@@ -24,6 +25,7 @@ FROM goal_details JOIN transaction_history
 ON goal_details.goal_id = transaction_history.goal_id
 {$whereClause}
 ";
+
 
 $result = mysqli_query( $conn, $query );
 if( !$result ){
