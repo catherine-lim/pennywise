@@ -1,11 +1,14 @@
 import React from 'react';
 import Header from './header';
 
+import Home from './home';
+
+
 import Onboarding from './onboarding';
 import CreateGoal from './create-goal';
-=======
-// import Home from './home';
+
 import GoalDetails from './goal-details';
+
 
 
 export default class App extends React.Component {
@@ -44,5 +47,6 @@ export default class App extends React.Component {
         </React.Fragment>
       );
     }
+
 
 }

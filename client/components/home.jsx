@@ -7,13 +7,14 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      goals: []
+      goals: [],
+      dailyGoalsTotal: ['dailyGoalsTotal'],
+      weeklyGoalsTotal: []
     };
 
     this.colors = ['teal', 'pink', 'orange'];
-    // this.differenceInDays = this.differenceInDays.bind(this);
-    // this.dailyGoal = this.dailyGoal.bind(this);
     this.generateCards = this.generateCards.bind(this);
+    // this.dailyGoalsTotal = this.dailyGoalsTotal.bind(this);
   }
 
   componentDidMount() {
@@ -26,7 +27,17 @@ export default class Home extends React.Component {
       .then(response => this.setState({ goals: response }));
   }
 
+  // dailyGoalsTotal(goalData) {
+
+  //   dailyGoalsTotal.push(goalData);sadfsdfsddsf
+  // }
+
+  weeklyGoalsTotal() {
+
+  }
+
   generateCards() {
+    // var dailyGoalsTotal = [];
     const goalList = this.state.goals.map((goalData, index) => {
       return <GoalCard
         key={goalData.goal_id}
@@ -37,7 +48,9 @@ export default class Home extends React.Component {
         currentSavings={goalData.current_savings}
         dailyGoal={dailyGoal(goalData)}
         isCompleted={goalData.isCompleted}
-        color={this.colors[index % this.colors.length]}/>;
+        color={this.colors[index % this.colors.length]}
+        // {this.dailyGoalsTotal(goalData)}
+      />;
     });
     return (goalList);
   }
@@ -46,7 +59,7 @@ export default class Home extends React.Component {
 
     return (
       <React.Fragment>
-
+        {this.state.dailyGoalsTotal}
         {this.generateCards()}
 
         <div className={`goal-card gray`}>
