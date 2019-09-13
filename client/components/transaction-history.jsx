@@ -1,9 +1,16 @@
-// import React from 'react';
-// import GoalDetails from 'goal-details.jsx';
+import React from 'react';
 
-// export default function TransactionHistory(props) {
+export default function TransactionHistory(props) {
 
-//   return (
-//     null
-//   );
-// }
+  return (
+    <React.Fragment>
+      <div className="transContainer">
+
+        <span className="trans-card-title">{props.date}</span>
+        <span className="trans-amount">{props.amount}</span>
+
+      </div>
+
+    </React.Fragment>
+  );
+}
