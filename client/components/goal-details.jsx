@@ -9,7 +9,8 @@ export default class GoalDetails extends React.Component {
     super(props);
     this.state = {
       goal: [],
-      amount_changed: ''
+      amount_changed: '',
+      goal_id: 4
 
     };
 
@@ -22,10 +23,11 @@ export default class GoalDetails extends React.Component {
   }
 
   getGoal() {
-    // const currentId = props.goal_id;
+    // const currentParam = this.props.params.id;
     fetch(`/api/goals.php?goal_id=4`)
       .then(res => res.json())
     // eslint-disable-next-line no-console
+
       .then(response => this.setState({ goal: response }));
   }
 
@@ -91,6 +93,14 @@ export default class GoalDetails extends React.Component {
     })
       .then(response => response.json());
 
+  }
+
+  getInputtedAmount() {
+    fetch(`/api/transaction_history/goal_id=4`)
+      .then(res => res.json())
+    // eslint-disable-next-line no-console
+
+      .then(response => this.setState({ amount_changed: response }));
   }
 
   addOrRemoveButtons() {
