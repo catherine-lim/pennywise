@@ -2,6 +2,7 @@ import React from 'react';
 // import GoalCard from 'goal-card';
 import { dailyGoal, differenceInDays, weeklyGoal, inDollars } from './helper.js';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+// import TransactionHistory from './transaction-history';
 
 export default class GoalDetails extends React.Component {
   constructor(props) {
@@ -26,11 +27,12 @@ export default class GoalDetails extends React.Component {
   getProgress() {
     const percent = this.state.goal.current_savings / this.state.goal.savings_target;
     const now = Math.round(percent * 100);
+
     return (
       <div className="progressBar">
         <ProgressBar
           className="progressBar"
-          variant="success"
+          striped variant="success"
           now={now}
           label={`${now}%`}
         />
@@ -42,7 +44,7 @@ export default class GoalDetails extends React.Component {
     return (
       <div className="dailyGoal">
         {dailyGoal(this.state.goal)}
-        <div className="day"> /day </div>
+        <div className="Day"> /day </div>
       </div>
     );
   }
@@ -59,8 +61,7 @@ export default class GoalDetails extends React.Component {
   towardsSavings() {
     return (
       <div className="-toward-6000">
-        {inDollars(this.state.goal.current_savings)} toward
-        {inDollars(this.state.goal.savings_target)}
+        {inDollars(this.state.goal.current_savings)} towards {''}{inDollars(this.state.goal.savings_target)}
       </div>
     );
   }
@@ -76,12 +77,14 @@ export default class GoalDetails extends React.Component {
 
   addOrRemoveButtons() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="add-button"></div>
-          <div className="subtract-button"></div>
+      <React.Fragment>
+        <div className="buttonContainer">
+          <div className="add-button">
+            <div className="subtract-button"></div>
+          </div>
         </div>
-      </div>
+        {/* <span className="subtract-button"></span> */}
+      </React.Fragment>
     );
   }
 
@@ -124,10 +127,42 @@ export default class GoalDetails extends React.Component {
     );
   }
 
+  // getHistory() {
+  //   if (!this.state.goal.transaction_history) {
+  //     return;
+  //   }
+  //   const transHistory = this.state.goal.transaction_history.map(dates => {
+  //     return (
+  //       <TransactionHistory
+  //         key = {dates.id}
+  //         date = {dates.transaction_date}
+  //         amount = {dates.transaction_amount}
+  //       />
+  //     );
+
+  //   });
+
+  // }
+
   render() {
+    // if (!this.state.goal.transaction_history) {
+    //   return;
+    // }
+    // const transHistory = this.state.goal.transaction_history.map(dates => {
+    //   return (
+    //     <TransactionHistory
+    //       key={dates.id}
+    //       date={dates.transaction_date}
+    //       amount={dates.transaction_amount}
+    //     />
+    //   );
+    // });
+
     return (
       <React.Fragment>
         {this.getEverything()}
+        {/* {this.getHistory()} */}
+
       </React.Fragment>
     );
   }

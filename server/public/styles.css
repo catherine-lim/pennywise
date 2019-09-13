@@ -175,7 +175,7 @@ body {
   overflow: hidden;
 }
 
-.day, .week {
+/* .day, .week {
   width: 153px;
   height: 33px;
  font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
@@ -187,7 +187,7 @@ body {
   letter-spacing: normal;
   text-align: right;
   color: #2cc0c8;
-}
+} */
 
  .weeklyGoal{
   float: right;
@@ -200,9 +200,10 @@ body {
 
 .progressBar {
 
-  margin-left: 24px;
-  margin-right: 24px;
+  margin-left: 12px;
+  margin-right: 12px;
   margin-top: 10px;
+  height: 30px;
 
 }
 
@@ -225,8 +226,8 @@ body {
 
   width: 375px;
   height: 24px;
-  font-family: PublicaPlay;
-  font-size: 22px;
+  font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
+    font-size: 22.0px;
   font-weight: 200;
   font-style: normal;
   font-stretch: normal;
@@ -246,41 +247,33 @@ body {
   width: 179px;
   height: 2px;
   background-color: #e0e0e0;
+}
 
-
-/* .add-button, .subtract-button {
-  position: absolute;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  margin-top: 90px;
-} */
-
-/* .add-button {
+.add-button, .subtract-button {
   position: relative;
   width: 56px;
   height: 56px;
   border-radius: 50%;
   margin-top: 90px;
+  /* margin-left: auto;
+  margin-right: auto; */
+}
+
+.add-button {
   background-color: #ff0083;
-  margin-left: -73px; */
+  margin-left: 92px;
 
 }
 .subtract-button {
-  position: relative;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  margin-top: 90px;
   background-color: #2cc0c8;
-  margin-left: 20px;
+  margin-left: 108px;
 }
 
 .Transaction-History {
   width: 375px;
   height: 24px;
-  font-family: PublicaPlay;
-  font-size: 22px;
+  font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
+  font-size: 22.0px;
   font-weight: 200;
   font-style: normal;
   font-stretch: normal;
