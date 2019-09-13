@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './header';
-// import Home from './home';
-import GoalDetails from './goal-details';
+import Home from './home';
+// import GoalDetails from './goal-details';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -49,10 +49,7 @@ export default class App extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <GoalDetails
-          setView = {this.setView}
-          params = {this.state.view.params}
-        />
+        <Home/>
       </React.Fragment>
     );
     // }

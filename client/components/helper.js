@@ -1,3 +1,6 @@
+// import React from 'react';
+// import GoalCard from './goal-card';
+
 export function differenceInDays(goal) {
   const todayDate = new Date(todaysDate());
   var goalDate = new Date(goal.goal_completion_date);

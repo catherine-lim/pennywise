@@ -26,10 +26,6 @@ body {
   margin: 0;
 }
 
-body {
-  margin: 0;
-}
-
 
 .header {
   position            : relative;
@@ -94,7 +90,7 @@ body {
   margin: auto;
 }
 
-/* .daily-goal {
+.daily-goal {
   position            : absolute;
   bottom              : 10px;
   right               : 20px;
@@ -105,11 +101,11 @@ body {
 
 
 
-/* .teal {
+.teal {
   width: 327px;
   height: 152px;
   background-image: linear-gradient(to left, #182664, #2cc0c8);
-} */
+}
 
 .-toward-6000 {
   width: 261px;
