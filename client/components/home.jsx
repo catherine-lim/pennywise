@@ -1,102 +1,59 @@
 import React from 'react';
 import GoalCard from './goal-card';
+import { dailyGoal } from './helper.js';
 
 export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      goals: [
-        {
-          'id': 1,
-          'name': 'Santorini Trip',
-          'dailyGoal': 1043,
-          'isCompleted': false
-        },
-        {
-          'id': 2,
-          'name': 'Macbook Pro',
-          'dailyGoal': 950,
-          'isCompleted': false
-        },
-        {
-          'id': 3,
-          'name': 'Suit for Work',
-          'dailyGoal': 786,
-          'isCompleted': false
-        }
-      ],
-      colorLoop: {
-        'teal': 'pink',
-        'pink': 'orange',
-        'orange': 'teal'
-      }
+      goals: []
     };
+
+    this.colors = ['teal', 'pink', 'orange'];
+    // this.differenceInDays = this.differenceInDays.bind(this);
+    // this.dailyGoal = this.dailyGoal.bind(this);
+    this.generateCards = this.generateCards.bind(this);
   }
 
-  inDollars(value) {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(value / 100);
+  componentDidMount() {
+    this.getGoals();
+  }
+
+  getGoals() {
+    fetch(`/api/home.php`)
+      .then(res => res.json())
+      .then(response => this.setState({ goals: response }));
+  }
+
+  generateCards() {
+    const goalList = this.state.goals.map((goalData, index) => {
+      return <GoalCard
+        key={goalData.goal_id}
+        id={goalData.goal_id}
+        name={goalData.goal_name}
+        completionDate={goalData.goal_completion_date}
+        savingsTarget={goalData.savings_target}
+        currentSavings={goalData.current_savings}
+        dailyGoal={dailyGoal(goalData)}
+        isCompleted={goalData.isCompleted}
+        color={this.colors[index % this.colors.length]}/>;
+    });
+    return (goalList);
   }
 
   render() {
-    this.currentColor = 'teal';
-    const goalList = this.state.goals.map(goalData => {
-      this.goalCard = <GoalCard
-        key={goalData.id}
-        id={goalData.id}
-        name={goalData.name}
-        dailyGoal={this.inDollars(goalData.dailyGoal)}
-        isCompleted={goalData.isCompleted}
-        colorClass={this.currentColor}/>;
-      this.currentColor = this.state.colorLoop[this.currentColor];
-
-      return (
-        this.goalCard
-      );
-    });
 
     return (
       <React.Fragment>
 
-        {goalList}
+        {this.generateCards()}
 
         <div className={`goal-card gray`}>
-          <span className="gc-title">Completed</span>
+          <span className="goal-card-title">Completed</span>
         </div>
 
       </React.Fragment>
     );
   }
 }
-
-// renderView() {
-//   switch (this.state.goals.id % 3) {
-//     case '0':
-//       return (
-//         <ProductList
-//           setView={this.setView} />
-//       );
-
-//     case '1':
-//       return (
-//         <ProductDetails
-//           id={this.state.view.params.id}
-//           setView={this.setView}
-//           addToCart={this.addToCart} />
-//       );
-
-//     case '2':
-//       return (
-//         <CartSummary
-//           cartArray={this.state.cart}
-//           view={this.setView} />
-//       );
-//   }
-// }
-
-// colorClass: ['teal',
-//   'pink',
-//   'orange'],

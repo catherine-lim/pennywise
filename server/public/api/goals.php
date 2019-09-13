@@ -16,7 +16,7 @@ $query =
 
   "SELECT goal_details.goal_id, goal_details.goal_name,
   goal_details.savings_target, goal_details.goal_start_date,
-  goal_details.goal_completion_date, goal_details.current_saving,
+  goal_details.goal_completion_date, goal_details.current_savings,
   goal_details.is_completed, goal_details.goal_achieved_date,
   transaction_history.transactions
   FROM goal_details
@@ -39,7 +39,7 @@ while ( $row = mysqli_fetch_assoc( $result ) ) {
       "goal_start_date" => $row["goal_start_date"],
       "goal_completion_date" => $row["goal_completion_date"],
       "goal_achieved_date" => $row["goal_achieved_date"],
-      "current_saving" => $row["current_saving"],
+      "current_savings" => $row["current_savings"],
       "is_completed" => $row["is_completed"],
       "transaction_history" => json_decode( $row['transactions'] )
     ];

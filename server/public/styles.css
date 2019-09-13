@@ -22,6 +22,14 @@
   font-family: "PublicaPlay-Light";
   src: url('./fonts/PublicaPlay-Light.ttf') format("truetype");
 }
+body {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
 
 .header {
   position            : relative;
@@ -39,7 +47,7 @@
   color               :#ffffff;
 }
 
-.hdr-title {
+.header-title {
   top                 : 43px;
   position            : relative;
   font-family         : "PublicaPlay-BoldItalic", Helvetica, Arial, serif;
@@ -80,17 +88,199 @@
 }
 
 
-.gc-title {
+.goal-card-title {
   margin: auto;
 }
 
-.daily-goal {
+/* .daily-goal {
   position            : absolute;
   bottom              : 10px;
   right               : 20px;
   font-family         : "PublicaPlay-UltraLight", Helvetica, Arial, serif;
   font-size           : 26.0px;
   color               :#ffffff;
+} */
+
+
+
+/* .teal {
+  width: 327px;
+  height: 152px;
+  background-image: linear-gradient(to left, #182664, #2cc0c8);
+} */
+
+.-toward-6000 {
+  margin-left: 25px;
+  width: 261px;
+  height: 20px;
+ font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: italic;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #2cc0c8;
+}
+
+
+.daysRemaining {
+  width: 188px;
+  height: 44px;
+  font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
+  font-size: 38px;
+  font-weight: normal;
+  font-style: italic;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #2cc0c8;
+}
+
+
+.Days {
+  width: 174px;
+  height: 18px;
+  font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
+  font-size: 18px;
+  font-weight: normal;
+  font-style: italic;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #2cc0c8;
+}
+
+
+ .dailyGoal, .weeklyGoal {
+  width: 188px;
+  height: 33px;
+  font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
+  font-size: 36.0px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2cc0c8;
+  overflow: hidden;
+}
+
+.day, .week {
+  width: 153px;
+  height: 33px;
+ font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
+  font-size: 24px;
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #2cc0c8;
+}
+
+ .weeklyGoal{
+  float: right;
+
+}
+
+.dailyGoal {
+  float: left;
+}
+
+.progressBar {
+
+  margin-left: 24px;
+  margin-right: 24px;
+  margin-top: 10px;
+
+}
+
+.background {
+  margin-top: 4px;
+  width: 327px;
+  height: 20px;
+  background-color: #acabab;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.Green {
+  width: 195.4px;
+  height: 20px;
+  background-color: #00ff00;
+}
+
+.add-or-remove-funds {
+
+  width: 375px;
+  height: 24px;
+  font-family: PublicaPlay;
+  font-size: 22px;
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #a9a9a9;
+}
+
+.Line {
+  width: 327px;
+  height: 2px;
+  background-color: #e0e0e0;
+}
+
+.Line2 {
+  width: 179px;
+  height: 2px;
+  background-color: #e0e0e0;
+
+
+/* .add-button, .subtract-button {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-top: 90px;
+} */
+
+.add-button {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-top: 90px;
+  background-color: #ff0083;
+  margin-left: -73px;
+
+}
+.subtract-button {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-top: 90px;
+  background-color: #2cc0c8;
+  margin-left: 20px;
+}
+
+.Transaction-History {
+  width: 375px;
+  height: 24px;
+  font-family: PublicaPlay;
+  font-size: 22px;
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #a9a9a9;
 }
 
 .onBoarding{
