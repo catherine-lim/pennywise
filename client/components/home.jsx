@@ -29,7 +29,7 @@ export default class Home extends React.Component {
 
   // dailyGoalsTotal(goalData) {
 
-  //   dailyGoalsTotal.push(goalData);
+  //   dailyGoalsTotal.push(goalData);sadfsdfsddsf
   // }
 
   weeklyGoalsTotal() {
