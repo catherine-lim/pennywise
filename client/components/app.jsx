@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from './header';
-import Home from './home';
+// import Home from './home';
 // import Onboarding from './onboarding';
 // import CreateGoal from './create-goal';
-// import GoalDetails from './goal-details';
+import GoalDetails from './goal-details';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -43,7 +43,7 @@ export default class App extends React.Component {
     return (
       <React.Fragment>
         <Header/>
-        <Home />
+        <GoalDetails />
       </React.Fragment>
     );
   }
