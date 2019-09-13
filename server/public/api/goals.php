@@ -53,11 +53,6 @@ while ( $row = mysqli_fetch_assoc( $result ) ) {
   );
   $output[0]["transaction_history"][] = $row;
 }
-// while ($row = mysqli_fetch_assoc($result)) {
-//   $row['transaction_date'] = explode(",", $row['images']);
-//   $output[] = $row;
-// }
-
 
 $output = $output[0];
 
