@@ -1,6 +1,6 @@
 import React from 'react';
 import GoalCard from './goal-card';
-import { dailyGoal } from './helper.js';
+import { dailyGoal, inDollars } from './helper.js';
 
 export default class Home extends React.Component {
 
@@ -13,8 +13,6 @@ export default class Home extends React.Component {
     };
 
     this.colors = ['teal', 'pink', 'orange'];
-    this.generateCards = this.generateCards.bind(this);
-    // this.dailyGoalsTotal = this.dailyGoalsTotal.bind(this);
   }
 
   componentDidMount() {
@@ -27,17 +25,20 @@ export default class Home extends React.Component {
       .then(response => this.setState({ goals: response }));
   }
 
-  // dailyGoalsTotal(goalData) {
-
-  //   dailyGoalsTotal.push(goalData);sadfsdfsddsf
-  // }
+  dailyGoalsTotal(i) {
+    var dailyGoalsArray = [];
+    for (i in this.state.goals) {
+      dailyGoalsArray.push(dailyGoal(this.state.goals[i]));
+    }
+    return dailyGoalsArray.reduce((a, b) => a + b, 0);
+  }
 
   weeklyGoalsTotal() {
-
+    var weeklyGoals = this.dailyGoalsTotal() * 7;
+    return (weeklyGoals);
   }
 
   generateCards() {
-    // var dailyGoalsTotal = [];
     const goalList = this.state.goals.map((goalData, index) => {
       return <GoalCard
         key={goalData.goal_id}
@@ -46,10 +47,9 @@ export default class Home extends React.Component {
         completionDate={goalData.goal_completion_date}
         savingsTarget={goalData.savings_target}
         currentSavings={goalData.current_savings}
-        dailyGoal={dailyGoal(goalData)}
+        dailyGoal={inDollars(dailyGoal(goalData))}
         isCompleted={goalData.isCompleted}
         color={this.colors[index % this.colors.length]}
-        // {this.dailyGoalsTotal(goalData)}
       />;
     });
     return (goalList);
@@ -59,7 +59,16 @@ export default class Home extends React.Component {
 
     return (
       <React.Fragment>
-        {this.state.dailyGoalsTotal}
+        {<div className="container">
+          <div>
+            {inDollars(this.dailyGoalsTotal())}
+          </div>
+
+          <div>
+            {inDollars(this.weeklyGoalsTotal())}
+          </div>
+        </div>}
+
         {this.generateCards()}
 
         <div className={`goal-card gray`}>

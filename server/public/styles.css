@@ -24,6 +24,9 @@
 }
 body {
   margin: 0;
+  display: flexbox;
+  align-content: center;
+  /* align-items: center; */
 }
 
 
@@ -54,6 +57,14 @@ body {
 .container {
   display: flexbox;
   align-content: center;
+}
+
+.daily-goals-total {
+    align-self: center;
+}
+
+.daily-goals-total {
+    align-self: center;
 }
 
 .goal-card{
