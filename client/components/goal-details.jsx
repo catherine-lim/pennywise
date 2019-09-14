@@ -8,7 +8,7 @@ export default class GoalDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      goal: [],
+      goal: {},
       amount_changed: '',
       goal_id: 4
 
@@ -101,26 +101,40 @@ export default class GoalDetails extends React.Component {
     fetch(`/api/transaction.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.state)
-    });
-    fetch(`/api/goals.php?goal_id=4`)
-      .then(res => res.json())
-    // eslint-disable-next-line no-console
+      body: JSON.stringify({
+        amount_changed: this.state.amount_changed,
+        goal_id: this.state.goal_id
+      })
+    })
       .then(response => {
-        this.setState({ goal: response });
+        return response.json();
+      })
+      .then(transaction => {
+        var oldTransactionHistory = this.state.goal.transaction_history;
+        var newTransactionHistory = [
+          ...oldTransactionHistory,
+          transaction
+        ];
+        var transactionTotal = this.getNewSavings(newTransactionHistory);
+
+        var oldGoal = this.state.goal;
+        var updatedGoal = {
+          ...oldGoal,
+          current_savings: transactionTotal,
+          transaction_history: newTransactionHistory
+        };
+        this.setState({
+          goal: updatedGoal
+        });
       });
 
   }
 
-  getNewSavings() {
-    if (!this.state.goal.transaction_history) {
-      return;
-    }
-    var total = 0;
+  getNewSavings(transactionHistory) {
 
-    const newCurrentSaving = this.state.goal.transaction_history;
-    for (var i = 0; i < newCurrentSaving.length; i++) {
-      total += Number(newCurrentSaving[i].transaction_amount);
+    var total = 0;
+    for (var i = 0; i < transactionHistory.length; i++) {
+      total += Number(transactionHistory[i].transaction_amount);
     }
 
     return total;
@@ -179,12 +193,12 @@ export default class GoalDetails extends React.Component {
     if (!this.state.goal.transaction_history) {
       return;
     }
-    const transHistory = this.state.goal.transaction_history.map(dates => {
+    const transHistory = this.state.goal.transaction_history.map((transaction, index) => {
       return (
         <TransactionHistory
-          key={dates.goal_id}
-          date={dates.transaction_date}
-          amount={dates.transaction_amount}
+          key={index}
+          date={transaction.transaction_date}
+          amount={transaction.transaction_amount}
         />
       );
 
@@ -211,12 +225,10 @@ export default class GoalDetails extends React.Component {
         {this.towardsSavings()}
         {this.newDailyGoal()}
         {this.newWeeklyGoal()}
-        {/* {this.addOrRemoveSavings()} */}
         {this.addOrRemoveButtons()}
         {this.makeTransactionHistory()}
         {this.getTransDate()}
         {this.getHistory()}
-        {this.getNewSavings()}
 
       </React.Fragment>
     );

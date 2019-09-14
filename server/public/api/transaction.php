@@ -13,43 +13,24 @@ $obj = json_decode($json_input, true);
 
 $goal_id = $obj['goal_id'];
 $transaction_date = date("Y-m-d");
-$amount_changed= $obj['amount_changed'];
+$transaction_amount= $obj['amount_changed'];
 
 $query =
 "INSERT INTO `transaction_history`(`goal_id`, `transaction_date`, `transaction_amount`)
-VALUES ({$goal_id}, \"{$transaction_date}\", {$amount_changed})";
-
+VALUES ({$goal_id}, \"{$transaction_date}\", {$transaction_amount})";
 
 
 $result = mysqli_query($conn, $query);
-// $output = [];
 
-// var_dump($result);
+if(!$result) {
+  throw new Exception(mysqli_error($conn));
+}
 
-// if(mysqli_affected_rows($conn)< 0){
-//   throw new Exception('could not update database');
-// }
+$transaction = [
+  'transaction_date' => $transaction_date,
+  'transaction_amount' => $transaction_amount,
+];
 
-// while ($row = mysqli_fetch_assoc($result)) {
-//   $output[] = [
-//     'goal_id' => $row['goal_id']
-//   ];
-// }
-// $output = [
-//   'success'=>true,
-//   'insertedID'=>mysqli_insert_id($conn)
-// ];
-// print(json_encode($output));
+print(json_encode($transaction));
 
-
-// if ($result) {
-//   print(mysql_result($result));
-
-//   // (['message' => "New record created successfully"]));
-// // } else if ($result2) {
-// //   print(json_encode(['message' => "New record created successfully"]));
-//   } else {
-//   http_response_code(500);
-//   print(json_encode(['error' => mysqli_error($conn)]));
-// }
 ?>

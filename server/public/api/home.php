@@ -24,7 +24,7 @@ if(!mysqli_num_rows($result)) {
 }
 
 if(!$result) {
-    throw new Exception(mysqli_connect_error());
+    throw new Exception(mysqli_error($conn));
 }
 
 $output = array();
@@ -34,4 +34,3 @@ while ($row = mysqli_fetch_assoc($result)) {
 };
 
 print(json_encode($output));
-
