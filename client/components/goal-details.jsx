@@ -26,9 +26,20 @@ export default class GoalDetails extends React.Component {
     // const currentParam = this.props.params.id;
     fetch(`/api/goals.php?goal_id=4`)
       .then(res => res.json())
-    // eslint-disable-next-line no-console
+      // eslint-disable-next-line no-console
+      .then(response => {
+        this.setState({ goal: response });
+      });
 
-      .then(response => this.setState({ goal: response }));
+  }
+
+  getTransAmount() {
+    fetch(`/api/goals.php?goal_id=4`)
+      .then(res => res.json())
+      // eslint-disable-next-line no-console
+      .then(response => {
+        this.setState({ goal: response });
+      });
   }
 
   getProgress() {
@@ -68,7 +79,8 @@ export default class GoalDetails extends React.Component {
   towardsSavings() {
     return (
       <div className="-toward-6000">
-        {inDollars(this.state.goal.current_savings)} towards {''}{inDollars(this.state.goal.savings_target)}
+        {inDollars(this.state.goal.current_savings)} towards {''}
+        {inDollars(this.state.goal.savings_target)}
       </div>
     );
   }
@@ -90,17 +102,28 @@ export default class GoalDetails extends React.Component {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(this.state)
-    })
-      .then(response => response.json());
+    });
+    fetch(`/api/goals.php?goal_id=4`)
+      .then(res => res.json())
+    // eslint-disable-next-line no-console
+      .then(response => {
+        this.setState({ goal: response });
+      });
 
   }
 
-  getInputtedAmount() {
-    fetch(`/api/transaction_history/goal_id=4`)
-      .then(res => res.json())
-    // eslint-disable-next-line no-console
+  getNewSavings() {
+    if (!this.state.goal.transaction_history) {
+      return;
+    }
+    var total = 0;
 
-      .then(response => this.setState({ amount_changed: response }));
+    const newCurrentSaving = this.state.goal.transaction_history;
+    for (var i = 0; i < newCurrentSaving.length; i++) {
+      total += Number(newCurrentSaving[i].transaction_amount);
+    }
+
+    return total;
   }
 
   addOrRemoveButtons() {
@@ -193,6 +216,7 @@ export default class GoalDetails extends React.Component {
         {this.makeTransactionHistory()}
         {this.getTransDate()}
         {this.getHistory()}
+        {this.getNewSavings()}
 
       </React.Fragment>
     );

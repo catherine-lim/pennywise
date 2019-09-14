@@ -42,8 +42,9 @@ export default class App extends React.Component {
 
     return (
       <React.Fragment>
-        <Header/>
+        <Header />
         <GoalDetails />
+        {/* <CreateGoal /> */}
       </React.Fragment>
     );
   }
