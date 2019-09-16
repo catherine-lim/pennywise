@@ -10,7 +10,16 @@ export default class GoalDetails extends React.Component {
     this.state = {
       goal: {},
       amount_changed: '',
-      goal_id: 4
+      goal_id: 4,
+      current_savings: null,
+      goal_achieved_date: null,
+      goal_completting_date: null,
+      // goal_id: null,
+      goal_name: null,
+      goal_start_date: null,
+      is_completed: null,
+      savings_target: null,
+      transaction_history: null
 
     };
 
@@ -28,17 +37,10 @@ export default class GoalDetails extends React.Component {
       .then(res => res.json())
       // eslint-disable-next-line no-console
       .then(response => {
-        this.setState({ goal: response });
-      });
-
-  }
-
-  getTransAmount() {
-    fetch(`/api/goals.php?goal_id=4`)
-      .then(res => res.json())
-      // eslint-disable-next-line no-console
-      .then(response => {
-        this.setState({ goal: response });
+        this.setState({
+          ...response,
+          current_savings: this.getTotalSavings(response.transaction_history)
+        });
       });
   }
 
@@ -115,7 +117,7 @@ export default class GoalDetails extends React.Component {
           ...oldTransactionHistory,
           transaction
         ];
-        var transactionTotal = this.getNewSavings(newTransactionHistory);
+        var transactionTotal = this.getTotalSavings(newTransactionHistory);
 
         var oldGoal = this.state.goal;
         var updatedGoal = {
@@ -130,7 +132,7 @@ export default class GoalDetails extends React.Component {
 
   }
 
-  getNewSavings(transactionHistory) {
+  getTotalSavings(transactionHistory) {
 
     var total = 0;
     for (var i = 0; i < transactionHistory.length; i++) {
@@ -216,7 +218,8 @@ export default class GoalDetails extends React.Component {
     );
   }
 
-  getEverything() {
+  render() {
+
     return (
       <React.Fragment>
         {this.getDaysRemaining()}
@@ -229,17 +232,6 @@ export default class GoalDetails extends React.Component {
         {this.makeTransactionHistory()}
         {this.getTransDate()}
         {this.getHistory()}
-
-      </React.Fragment>
-    );
-  }
-
-  render() {
-
-    return (
-      <React.Fragment>
-        {this.getEverything()}
-
       </React.Fragment>
     );
   }
