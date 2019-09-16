@@ -8,13 +8,12 @@ export default class GoalDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      goal: {},
+
       amount_changed: '',
-      goal_id: 4,
+      goal_id: props.id,
       current_savings: null,
       goal_achieved_date: null,
       goal_completting_date: null,
-      // goal_id: null,
       goal_name: null,
       goal_start_date: null,
       is_completed: null,
@@ -45,7 +44,7 @@ export default class GoalDetails extends React.Component {
   }
 
   getProgress() {
-    const percent = this.state.goal.current_savings / this.state.goal.savings_target;
+    const percent = this.state.current_savings / this.state.savings_target;
     const now = Math.round(percent * 100);
 
     return (
@@ -63,7 +62,7 @@ export default class GoalDetails extends React.Component {
   newDailyGoal() {
     return (
       <div className="dailyGoal">
-        {dailyGoal(this.state.goal)}
+        {dailyGoal(this.state)}
         <div className="Day"> /day </div>
       </div>
     );
@@ -72,7 +71,7 @@ export default class GoalDetails extends React.Component {
   newWeeklyGoal() {
     return (
       <div className="weeklyGoal">
-        {weeklyGoal(this.state.goal)}
+        {weeklyGoal(this.state)}
         <div className="week">/days</div>
       </div>
     );
@@ -81,8 +80,8 @@ export default class GoalDetails extends React.Component {
   towardsSavings() {
     return (
       <div className="-toward-6000">
-        {inDollars(this.state.goal.current_savings)} towards {''}
-        {inDollars(this.state.goal.savings_target)}
+        {inDollars(this.state.current_savings)} towards {''}
+        {inDollars(this.state.savings_target)}
       </div>
     );
   }
@@ -112,14 +111,14 @@ export default class GoalDetails extends React.Component {
         return response.json();
       })
       .then(transaction => {
-        var oldTransactionHistory = this.state.goal.transaction_history;
+        var oldTransactionHistory = this.state.transaction_history;
         var newTransactionHistory = [
           ...oldTransactionHistory,
           transaction
         ];
         var transactionTotal = this.getTotalSavings(newTransactionHistory);
 
-        var oldGoal = this.state.goal;
+        var oldGoal = this.state;
         var updatedGoal = {
           ...oldGoal,
           current_savings: transactionTotal,
@@ -171,14 +170,14 @@ export default class GoalDetails extends React.Component {
   getCardTitle() {
     return (
       <div className="goal-card-title teal">
-        <span className="goal-card"> {this.state.goal.goal_name}</span>
+        <span className="goal-card"> {this.state.goal_name}</span>
       </div>
     );
   }
 
   getDaysRemaining() {
     return (
-      <div className="daysRemaining">{differenceInDays(this.state.goal)} days</div>
+      <div className="daysRemaining">{differenceInDays(this.state)} days</div>
     );
   }
 
@@ -192,10 +191,10 @@ export default class GoalDetails extends React.Component {
   }
 
   getHistory() {
-    if (!this.state.goal.transaction_history) {
+    if (!this.state.transaction_history) {
       return;
     }
-    const transHistory = this.state.goal.transaction_history.map((transaction, index) => {
+    const transHistory = this.state.transaction_history.map((transaction, index) => {
       return (
         <TransactionHistory
           key={index}
