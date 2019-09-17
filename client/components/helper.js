@@ -32,7 +32,7 @@ export function dailyGoal(goal) {
   var daysLeft = differenceInDays(goal);
   var amountLeftToSave = goal.savings_target - goal.current_savings;
   var dailyGoalVar = amountLeftToSave / daysLeft;
-  return (inDollars(dailyGoalVar));
+  return (dailyGoalVar);
 
 }
 
@@ -41,5 +41,5 @@ export function weeklyGoal(goal) {
   var weeks = (daysLeft / 7);
   var amountLeftToSave = goal.savings_target - goal.current_savings;
   var weeklyGoal = amountLeftToSave / weeks;
-  return (inDollars(weeklyGoal));
+  return ((weeklyGoal));
 }

@@ -8,12 +8,6 @@ $obj = json_decode($json_input, true);
 $goal_id = $obj['goal_id'];
 $transaction_date = date("Y-m-d");
 $amount_changed = $obj['amount_changed'];
-// $type = $obj['name'];
-
-// if($type === 'subtract') {
-//   $amount_changed = ($amount_changed * (-1));
-// }
-
 
 
 
@@ -30,11 +24,6 @@ if ($result) {
   print(json_encode(['error' => mysqli_error($conn)]));
 }
 
-$transaction = [
-  'transaction_date' => $transaction_date,
-  'transaction_amount' => $amount_changed
-];
 
-print(json_encode($transaction));
 
 ?>

@@ -24,6 +24,9 @@
 }
 body {
   margin: 0;
+  display: flexbox;
+  align-content: center;
+  /* align-items: center; */
 }
 
 
@@ -52,14 +55,45 @@ body {
 }
 
 .container {
-  display: flexbox;
-  align-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.daily-goals-total {
+    align-self: center;
+}
+
+.weekly-goals-total {
+    align-self: center;
+}
+
+.new-goal-button {
+    display: flex;
+
+  width: 327px;
+  height: 80px;
+  border: solid 2px #2cc0c8;
+  font-family         : "PublicaPlay-UltraLight", Helvetica, Arial, serif;
+  font-size: 36px;
+  line-height         : 43.0px;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2cc0c8;
+
+
+}
+
+.new-goal-text {
+  align-self: center;
+  color: #2cc0c8;
 }
 
 .goal-card{
   display             : flex;
   position            : relative;
-  margin              : auto;
+  margin:             : auto;
+  top:                : 34px;
+  bottom:             : 34px;
   width               : 327px;
   height              : 152px;
   font-family         : "PublicaPlay-UltraLight", Helvetica, Arial, serif;
@@ -187,16 +221,15 @@ body {
   float: left;
 }
 
-.progressBar {
+.progress-bar {
 
   margin-left: 12px;
   margin-right: 12px;
   margin-top: 10px;
   height: 30px;
-
 }
 
-.background {
+.bar-background {
   margin-top: 4px;
   width: 327px;
   height: 20px;
@@ -205,10 +238,10 @@ body {
   margin-right: 24px;
 }
 
-.Green {
-  width: 195.4px;
+.bar-green {
   height: 20px;
   background-color: #00ff00;
+  z-index: 1;
 }
 
 .add-or-remove-funds {
@@ -356,5 +389,3 @@ input[type=text],input[type=number]{
   text-align: center;
   color: #a9a9a9;
 }
-
-

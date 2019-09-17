@@ -1,7 +1,6 @@
 import React from 'react';
-// import GoalCard from 'goal-card';
 import { dailyGoal, differenceInDays, weeklyGoal, inDollars } from './helper.js';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+
 import TransactionHistory from './transaction-history';
 
 export default class GoalDetails extends React.Component {
@@ -31,9 +30,9 @@ export default class GoalDetails extends React.Component {
     this.getGoal();
   }
 
-  getGoal() {
-    // const currentParam = this.props.params.id;
-    fetch(`/api/goals.php?goal_id=4`)
+  getGoal(props) {
+    // const currentParam = this.props.goal_id;
+    fetch(`/api/goals.php?goal_id=3`)
       .then(res => res.json())
       // eslint-disable-next-line no-console
       .then(response => {
@@ -46,16 +45,17 @@ export default class GoalDetails extends React.Component {
 
   getProgress() {
     const percent = this.state.current_savings / this.state.savings_target;
-    const now = Math.round(percent * 100);
-
+    const percentage = Math.round(percent * 100);
+    const styling = {
+      width: `${percentage}%`
+    };
     return (
-      <div className="progressBar">
-        <ProgressBar
-          className="progressBar"
-          striped variant="success"
-          now={now}
-          label={`${now}%`}
-        />
+      <div className="progress-bar">
+        <div className="bar-background">
+          <div className="bar-green" style={styling}>
+
+          </div>
+        </div>
       </div>
     );
   }
@@ -63,7 +63,7 @@ export default class GoalDetails extends React.Component {
   newDailyGoal() {
     return (
       <div className="dailyGoal">
-        {dailyGoal(this.state)}
+        {inDollars(dailyGoal(this.state))}
         <div className="Day"> /day </div>
       </div>
     );
@@ -72,7 +72,7 @@ export default class GoalDetails extends React.Component {
   newWeeklyGoal() {
     return (
       <div className="weeklyGoal">
-        {weeklyGoal(this.state)}
+        {inDollars(weeklyGoal(this.state))}
         <div className="week">/days</div>
       </div>
     );
@@ -114,25 +114,10 @@ export default class GoalDetails extends React.Component {
         return response.json();
       })
       .then(transaction => {
-        var oldTransactionHistory = this.state.transaction_history;
-        var newTransactionHistory = [
-          ...oldTransactionHistory,
-          transaction
-        ];
-        var transactionTotal = this.getTotalSavings(newTransactionHistory);
-
-        var oldGoal = this.state;
-        var updatedGoal = {
-          ...oldGoal,
-          current_savings: transactionTotal,
-          transaction_history: newTransactionHistory
-        };
-        this.setState({
-          ...updatedGoal,
-          current_savings: this.getTotalSavings(updatedGoal.transaction_history)
-        });
-
+        this.getGoal();
       });
+
+    // });
 
   }
 
@@ -219,7 +204,7 @@ export default class GoalDetails extends React.Component {
       );
 
     });
-    return (transHistory);
+    return transHistory;
   }
 
   getTransDate() {
