@@ -10,9 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-
         name: 'onboarding',
-
         params: {}
       }
     };
@@ -64,9 +62,7 @@ export default class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-
-        <Header />
-
+        <Header setView={this.setView}/>
         {this.renderView()}
       </React.Fragment>
     );
