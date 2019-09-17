@@ -50,6 +50,7 @@ export default class Home extends React.Component {
         dailyGoal={inDollars(dailyGoal(goalData))}
         isCompleted={goalData.isCompleted}
         color={this.colors[index % this.colors.length]}
+        setView={this.props.setView}
       />;
     });
     return (goalList);
@@ -68,6 +69,9 @@ export default class Home extends React.Component {
             {inDollars(this.weeklyGoalsTotal())}
           </div>
         </div>}
+        <div className="new-goal-button" onClick={props => this.props.setView('creategoal', { goal_id: props.id })}>
+          <span className="new-goal-text">New Goal</span>
+        </div>
 
         {this.generateCards()}
 

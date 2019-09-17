@@ -1,48 +1,62 @@
 import React from 'react';
 // import GoalCard from 'goal-card';
 import { dailyGoal, differenceInDays, weeklyGoal, inDollars } from './helper.js';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+
 import TransactionHistory from './transaction-history';
 
 export default class GoalDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      goal: [],
+
       amount_changed: '',
-      goal_id: 4
+      goal_id: '',
+      current_savings: '',
+      goal_achieved_date: '',
+      goal_completion_date: '',
+      goal_name: '',
+      goal_start_date: '',
+      is_completed: '',
+      savings_target: '',
+      transaction_history: ''
 
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   componentDidMount(props) {
     this.getGoal();
   }
 
-  getGoal() {
-    // const currentParam = this.props.params.id;
-    fetch(`/api/goals.php?goal_id=4`)
+  getGoal(props) {
+    const currentParam = this.props.params.id;
+    fetch(`/api/goals.php?goal_id=` + currentParam)
       .then(res => res.json())
-    // eslint-disable-next-line no-console
-
-      .then(response => this.setState({ goal: response }));
+      // eslint-disable-next-line no-console
+      .then(response => {
+        this.setState({
+          ...response,
+          current_savings: this.getTotalSavings(response.transaction_history)
+        });
+      });
   }
 
   getProgress() {
-    const percent = this.state.goal.current_savings / this.state.goal.savings_target;
-    const now = Math.round(percent * 100);
-
+    const percent = this.state.current_savings / this.state.savings_target;
+    const percentage = Math.round(percent * 100);
+    const styling = {
+      width: `${percentage}%`
+    };
     return (
-      <div className="progressBar">
-        <ProgressBar
-          className="progressBar"
-          striped variant="success"
-          now={now}
-          label={`${now}%`}
-        />
+      <div className="progress-bar">
+        <div className="bar-background">
+          <div className="bar-green" style={styling}>
+
+          </div>
+        </div>
       </div>
     );
   }
@@ -50,7 +64,7 @@ export default class GoalDetails extends React.Component {
   newDailyGoal() {
     return (
       <div className="dailyGoal">
-        {dailyGoal(this.state.goal)}
+        {inDollars(dailyGoal(this.state))}
         <div className="Day"> /day </div>
       </div>
     );
@@ -59,7 +73,7 @@ export default class GoalDetails extends React.Component {
   newWeeklyGoal() {
     return (
       <div className="weeklyGoal">
-        {weeklyGoal(this.state.goal)}
+        {inDollars(weeklyGoal(this.state))}
         <div className="week">/days</div>
       </div>
     );
@@ -68,7 +82,8 @@ export default class GoalDetails extends React.Component {
   towardsSavings() {
     return (
       <div className="-toward-6000">
-        {inDollars(this.state.goal.current_savings)} towards {''}{inDollars(this.state.goal.savings_target)}
+        {inDollars(this.state.current_savings)} towards {''}
+        {inDollars(this.state.savings_target)}
       </div>
     );
   }
@@ -80,33 +95,63 @@ export default class GoalDetails extends React.Component {
     });
   }
 
-  handleSubmit(event) {
+  handleSubmit(event, direction = 1) {
     event.preventDefault();
-    this.amountChange();
+    this.amountChange(direction);
   }
 
-  amountChange() {
+  amountChange(direction) {
+
     fetch(`/api/transaction.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.state)
+      body: JSON.stringify({
+        amount_changed: direction * this.state.amount_changed,
+        goal_id: this.state.goal_id,
+        name: ''
+      })
     })
-      .then(response => response.json());
+      .then(response => {
+        return response.json();
+      })
+      .then(transaction => {
+        var oldTransactionHistory = this.state.transaction_history;
+        var newTransactionHistory = [
+          ...oldTransactionHistory,
+          transaction
+        ];
+        var transactionTotal = this.getTotalSavings(newTransactionHistory);
+
+        var oldGoal = this.state;
+        var updatedGoal = {
+          ...oldGoal,
+          current_savings: transactionTotal,
+          transaction_history: newTransactionHistory
+        };
+        this.setState({
+          ...updatedGoal,
+          current_savings: this.getTotalSavings(updatedGoal.transaction_history)
+        });
+
+      });
 
   }
 
-  getInputtedAmount() {
-    fetch(`/api/transaction_history/goal_id=4`)
-      .then(res => res.json())
-    // eslint-disable-next-line no-console
+  getTotalSavings(transactionHistory) {
 
-      .then(response => this.setState({ amount_changed: response }));
+    var total = 0;
+    for (var i = 0; i < transactionHistory.length; i++) {
+      total += Number(transactionHistory[i].transaction_amount);
+    }
+
+    return total;
   }
 
   addOrRemoveButtons() {
+    // onSubmit={this.handleSubmit}
     return (
       <React.Fragment>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <div className="add-or-remove-funds">
             <input
               type="text"
@@ -118,12 +163,21 @@ export default class GoalDetails extends React.Component {
             <div className="Line"></div>
           </div>
           <div className="buttonContainer">
-            <button type="submit" name="submit" className="add-button">
-            </button>
-            <button type="submit" name="submit" className="subtract-button">
+            <button
+              type="submit"
+              name="subtract"
+              className="subtract-button"
+              onClick={e => this.handleSubmit(e, -1)}
+            >-</button>
+            <button
+              type="submit"
+              name="add"
+              className="add-button"
+              onClick={e => this.handleSubmit(e, 1)}
+            >
+              +
             </button>
           </div>
-
         </form>
       </React.Fragment>
     );
@@ -131,15 +185,15 @@ export default class GoalDetails extends React.Component {
 
   getCardTitle() {
     return (
-      <div className="goal-card-title teal">
-        <span className="goal-card"> {this.state.goal.goal_name}</span>
+      <div className={`goal-card-title ${this.props.params.color}`}>
+        <span className="goal-card"> {this.state.goal_name}</span>
       </div>
     );
   }
 
   getDaysRemaining() {
     return (
-      <div className="daysRemaining">{differenceInDays(this.state.goal)} days</div>
+      <div className="daysRemaining">{differenceInDays(this.state)} days</div>
     );
   }
 
@@ -153,15 +207,15 @@ export default class GoalDetails extends React.Component {
   }
 
   getHistory() {
-    if (!this.state.goal.transaction_history) {
+    if (!this.state.transaction_history) {
       return;
     }
-    const transHistory = this.state.goal.transaction_history.map(dates => {
+    const transHistory = this.state.transaction_history.map((transaction, index) => {
       return (
         <TransactionHistory
-          key={dates.goal_id}
-          date={dates.transaction_date}
-          amount={dates.transaction_amount}
+          key={index}
+          date={transaction.transaction_date}
+          amount={transaction.transaction_amount}
         />
       );
 
@@ -179,7 +233,8 @@ export default class GoalDetails extends React.Component {
     );
   }
 
-  getEverything() {
+  render() {
+
     return (
       <React.Fragment>
         {this.getDaysRemaining()}
@@ -188,22 +243,10 @@ export default class GoalDetails extends React.Component {
         {this.towardsSavings()}
         {this.newDailyGoal()}
         {this.newWeeklyGoal()}
-        {/* {this.addOrRemoveSavings()} */}
         {this.addOrRemoveButtons()}
         {this.makeTransactionHistory()}
         {this.getTransDate()}
         {this.getHistory()}
-
-      </React.Fragment>
-    );
-  }
-
-  render() {
-
-    return (
-      <React.Fragment>
-        {this.getEverything()}
-
       </React.Fragment>
     );
   }
