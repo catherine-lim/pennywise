@@ -11,7 +11,7 @@ export default class App extends React.Component {
     this.state = {
       view: {
 
-        name: 'home',
+        name: 'onboarding',
 
         params: {}
       }
@@ -26,7 +26,6 @@ export default class App extends React.Component {
       }
     });
   }
-
 
   renderView() {
     switch (this.state.view.name) {

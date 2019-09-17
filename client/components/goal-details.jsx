@@ -20,7 +20,6 @@ export default class GoalDetails extends React.Component {
       savings_target: '',
       transaction_history: ''
 
-
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -33,7 +32,6 @@ export default class GoalDetails extends React.Component {
   }
 
   getGoal(props) {
-
     const currentParam = this.props.params.id;
     fetch(`/api/goals.php?goal_id=` + currentParam)
 
@@ -147,24 +145,24 @@ export default class GoalDetails extends React.Component {
               onChange={this.handleChange}
               placeholder="add or remove funds"
             ></input>
-            <div className="Line"></div>
+            {/* <div className="Line"></div> */}
           </div>
-          <div className="buttonContainer">
-            <button
-              type="submit"
-              name="subtract"
-              className="subtract-button"
-              onClick={e => this.handleSubmit(e, -1)}
-            >-</button>
-            <button
-              type="submit"
-              name="add"
-              className="add-button"
-              onClick={e => this.handleSubmit(e, 1)}
-            >
+          {/* <div className="buttonContainer"> */}
+          <button
+            type="submit"
+            name="subtract"
+            className="subtract-button"
+            onClick={e => this.handleSubmit(e, -1)}
+          >-</button>
+          <button
+            type="submit"
+            name="add"
+            className="add-button"
+            onClick={e => this.handleSubmit(e, 1)}
+          >
               +
-            </button>
-          </div>
+          </button>
+          {/* </div> */}
         </form>
       </React.Fragment>
     );

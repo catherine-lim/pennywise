@@ -249,7 +249,7 @@ body {
   width: 375px;
   height: 24px;
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
-    font-size: 22.0px;
+  font-size: 22.0px;
   font-weight: 200;
   font-style: normal;
   font-stretch: normal;
@@ -282,12 +282,12 @@ body {
 }
 
 .add-button {
-  background-color: #ff0083;
+  background-color: #2cc0c8;
   margin-left: 92px;
 
 }
 .subtract-button {
-  background-color: #2cc0c8;
+  background-color: #ff0083;
   margin-left: 108px;
 }
 

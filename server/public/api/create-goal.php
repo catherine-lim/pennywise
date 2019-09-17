@@ -36,12 +36,12 @@ $last_id = mysqli_insert_id($conn);
 $query2 = "INSERT INTO `transaction_history`(`goal_id`, `transaction_date`, `transaction_amount`)
 VALUES ({$last_id}, \"{$transaction_date}\", {$current_savings})";
 
-if ($result) {
-    print(json_encode(['message' => "New record created successfully"]));
-} else {
-    http_response_code(500);
-    print(json_encode(['error' => mysqli_error($conn)]));
-}
+// if ($result) {
+//     print(json_encode(['message' => "New record created successfully"]));
+// } else {
+//     http_response_code(500);
+//     print(json_encode(['error' => mysqli_error($conn)]));
+// }
 
 $result = mysqli_query($conn, $query2);
 
