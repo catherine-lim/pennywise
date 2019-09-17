@@ -9,15 +9,17 @@ export default class GoalDetails extends React.Component {
     this.state = {
 
       amount_changed: '',
-      goal_id: props.id,
-      current_savings: null,
-      goal_achieved_date: null,
-      goal_completting_date: null,
-      goal_name: null,
-      goal_start_date: null,
-      is_completed: null,
-      savings_target: null,
-      transaction_history: null
+
+      goal_id: '',
+      current_savings: '',
+      goal_achieved_date: '',
+      goal_completion_date: '',
+      goal_name: '',
+      goal_start_date: '',
+      is_completed: '',
+      savings_target: '',
+      transaction_history: ''
+
 
     };
 
@@ -31,8 +33,10 @@ export default class GoalDetails extends React.Component {
   }
 
   getGoal(props) {
-    // const currentParam = this.props.goal_id;
-    fetch(`/api/goals.php?goal_id=3`)
+
+    const currentParam = this.props.params.id;
+    fetch(`/api/goals.php?goal_id=` + currentParam)
+
       .then(res => res.json())
       // eslint-disable-next-line no-console
       .then(response => {
@@ -114,10 +118,9 @@ export default class GoalDetails extends React.Component {
         return response.json();
       })
       .then(transaction => {
+
         this.getGoal();
       });
-
-    // });
 
   }
 
@@ -169,7 +172,9 @@ export default class GoalDetails extends React.Component {
 
   getCardTitle() {
     return (
-      <div className="goal-card-title teal">
+
+      <div className={`goal-card-title ${this.props.params.color}`}>
+
         <span className="goal-card"> {this.state.goal_name}</span>
       </div>
     );

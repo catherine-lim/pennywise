@@ -34,11 +34,14 @@ export default class Home extends React.Component {
 
   weeklyGoalsTotal() {
     var weeklyGoals = this.dailyGoalsTotal() * 7;
+
     return weeklyGoals;
+
   }
 
   generateCards() {
     const goalList = this.state.goals.map((goalData, index) => {
+
       return (
         <GoalCard
           key={goalData.goal_id}
@@ -53,6 +56,7 @@ export default class Home extends React.Component {
           setView={this.props.setView}
         />
       );
+
     });
     return goalList;
   }
@@ -60,6 +64,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
+
         {
           <div className="container">
             <div>{inDollars(this.dailyGoalsTotal())}</div>
@@ -73,6 +78,7 @@ export default class Home extends React.Component {
             this.props.setView('creategoal', { goal_id: props.id })
           }
         >
+
           <span className="new-goal-text">New Goal</span>
         </div>
 

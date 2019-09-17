@@ -10,7 +10,9 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'goaldetails',
+
+        name: 'home',
+
         params: {}
       }
     };
@@ -25,26 +27,47 @@ export default class App extends React.Component {
     });
   }
 
-  renderView(props) {
+
+  renderView() {
     switch (this.state.view.name) {
       case 'onboarding':
-        return <Onboarding setView={this.setView}/>;
+        return (
+          <Onboarding
+            setView={this.setView}
+            params={this.state.view.params}
+          />
+        );
 
       case 'creategoal':
-        return <CreateGoal setView={this.setView}/>;
+        return (
+          <CreateGoal
+            params={this.state.view.params}
+            setView={this.setView}/>
+        );
 
       case 'goaldetails':
-        return <GoalDetails setView={this.setView} />;
+        return (
+          <GoalDetails
+            params={this.state.view.params}
+            setView={this.setView}/>
+        );
 
       case 'home':
-        return <Home setView={this.setView} />;
+        return (
+          <Home
+            params={this.state.view.params}
+            setView={this.setView}/>
+        );
+
     }
   }
 
   render() {
     return (
       <React.Fragment>
+
         <Header />
+
         {this.renderView()}
       </React.Fragment>
     );
