@@ -21,15 +21,16 @@ export default class CreateGoal extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.saveGoal();
+    this.props.setView('home', {});
   }
   saveGoal() {
     fetch('/api/create-goal.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(this.state)
-
     })
       .then(response => response.json());
+
   }
 
   render() {
@@ -60,7 +61,7 @@ export default class CreateGoal extends React.Component {
             <br></br>
             <input type="date" name="goal_completion_date" value={this.state.goal_completion_date} onChange={this.handleChange} id="goal_completion_date" className="form-control" />
           </div>
-          <button type="submit" name="submit" className="saveGoalButton"> <p>Save</p> </button>
+          <button type="submit" name="submit" className="saveGoalButton" > <p>Save</p> </button>
         </form>
 
       </React.Fragment>
