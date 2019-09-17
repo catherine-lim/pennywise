@@ -125,8 +125,10 @@ export default class GoalDetails extends React.Component {
           transaction_history: newTransactionHistory
         };
         this.setState({
-          goal: updatedGoal
+          ...updatedGoal,
+          current_savings: this.getTotalSavings(updatedGoal.transaction_history)
         });
+
       });
 
   }
@@ -158,7 +160,7 @@ export default class GoalDetails extends React.Component {
           <div className="buttonContainer">
             <button type="submit" name="submit" className="add-button">
             </button>
-            <button type="submit" name="submit" className="subtract-button">
+            <button type="submit subtract" name="submit" className="subtract-button">
             </button>
           </div>
 
