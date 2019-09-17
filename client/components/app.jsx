@@ -10,7 +10,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       view: {
-        name: 'goaldetails',
+        name: 'onboarding',
         params: {}
       }
     };
@@ -28,16 +28,16 @@ export default class App extends React.Component {
   renderView(props) {
     switch (this.state.view.name) {
       case 'onboarding':
-        return <Onboarding />;
+        return <Onboarding setView={this.setView}/>;
 
       case 'creategoal':
-        return <CreateGoal />;
+        return <CreateGoal setView={this.setView}/>;
 
       case 'goaldetails':
-        return <GoalDetails />;
+        return <GoalDetails setView={this.setView} />;
 
       case 'home':
-        return <Home />;
+        return <Home setView={this.setView} />;
     }
   }
 
