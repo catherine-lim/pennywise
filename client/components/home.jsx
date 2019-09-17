@@ -3,7 +3,6 @@ import GoalCard from './goal-card';
 import { dailyGoal, inDollars } from './helper.js';
 
 export default class Home extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -35,41 +34,51 @@ export default class Home extends React.Component {
 
   weeklyGoalsTotal() {
     var weeklyGoals = this.dailyGoalsTotal() * 7;
-    return (weeklyGoals);
+
+    return weeklyGoals;
+
   }
 
   generateCards() {
     const goalList = this.state.goals.map((goalData, index) => {
-      return <GoalCard
-        key={goalData.goal_id}
-        id={goalData.goal_id}
-        name={goalData.goal_name}
-        completionDate={goalData.goal_completion_date}
-        savingsTarget={goalData.savings_target}
-        currentSavings={goalData.current_savings}
-        dailyGoal={inDollars(dailyGoal(goalData))}
-        isCompleted={goalData.isCompleted}
-        color={this.colors[index % this.colors.length]}
-        setView={this.props.setView}
-      />;
+
+      return (
+        <GoalCard
+          key={goalData.goal_id}
+          id={goalData.goal_id}
+          name={goalData.goal_name}
+          completionDate={goalData.goal_completion_date}
+          savingsTarget={goalData.savings_target}
+          currentSavings={goalData.current_savings}
+          dailyGoal={inDollars(dailyGoal(goalData))}
+          isCompleted={goalData.isCompleted}
+          color={this.colors[index % this.colors.length]}
+          setView={this.props.setView}
+        />
+      );
+
     });
-    return (goalList);
+    return goalList;
   }
 
   render() {
-
     return (
       <React.Fragment>
-        {<div className="container">
-          <div>
-            {inDollars(this.dailyGoalsTotal())}
-          </div>
 
-          <div>
-            {inDollars(this.weeklyGoalsTotal())}
+        {
+          <div className="container">
+            <div>{inDollars(this.dailyGoalsTotal())}</div>
+
+            <div>{inDollars(this.weeklyGoalsTotal())}</div>
           </div>
-        </div>}
-        <div className="new-goal-button" onClick={props => this.props.setView('creategoal', { goal_id: props.id })}>
+        }
+        <div
+          className="new-goal-button"
+          onClick={props =>
+            this.props.setView('creategoal', { goal_id: props.id })
+          }
+        >
+
           <span className="new-goal-text">New Goal</span>
         </div>
 
@@ -78,7 +87,6 @@ export default class Home extends React.Component {
         <div className={`goal-card gray`}>
           <span className="goal-card-title">Completed</span>
         </div>
-
       </React.Fragment>
     );
   }

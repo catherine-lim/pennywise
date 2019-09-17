@@ -9,21 +9,24 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
       view: {
+
         name: 'home',
+
         params: {}
       }
     };
     this.setView = this.setView.bind(this);
-
   }
   setView(name, params) {
-    this.setState({ view: {
-      name: name,
-      params: params
-    } });
+    this.setState({
+      view: {
+        name: name,
+        params: params
+      }
+    });
   }
+
 
   renderView() {
     switch (this.state.view.name) {
@@ -55,16 +58,18 @@ export default class App extends React.Component {
             params={this.state.view.params}
             setView={this.setView}/>
         );
+
     }
   }
 
   render() {
     return (
       <React.Fragment>
-        <Header/>
+
+        <Header />
+
         {this.renderView()}
       </React.Fragment>
     );
   }
-
 }

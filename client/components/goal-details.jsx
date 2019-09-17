@@ -1,5 +1,4 @@
 import React from 'react';
-// import GoalCard from 'goal-card';
 import { dailyGoal, differenceInDays, weeklyGoal, inDollars } from './helper.js';
 
 import TransactionHistory from './transaction-history';
@@ -10,6 +9,7 @@ export default class GoalDetails extends React.Component {
     this.state = {
 
       amount_changed: '',
+
       goal_id: '',
       current_savings: '',
       goal_achieved_date: '',
@@ -19,6 +19,7 @@ export default class GoalDetails extends React.Component {
       is_completed: '',
       savings_target: '',
       transaction_history: ''
+
 
     };
 
@@ -32,8 +33,10 @@ export default class GoalDetails extends React.Component {
   }
 
   getGoal(props) {
+
     const currentParam = this.props.params.id;
     fetch(`/api/goals.php?goal_id=` + currentParam)
+
       .then(res => res.json())
       // eslint-disable-next-line no-console
       .then(response => {
@@ -115,24 +118,8 @@ export default class GoalDetails extends React.Component {
         return response.json();
       })
       .then(transaction => {
-        var oldTransactionHistory = this.state.transaction_history;
-        var newTransactionHistory = [
-          ...oldTransactionHistory,
-          transaction
-        ];
-        var transactionTotal = this.getTotalSavings(newTransactionHistory);
 
-        var oldGoal = this.state;
-        var updatedGoal = {
-          ...oldGoal,
-          current_savings: transactionTotal,
-          transaction_history: newTransactionHistory
-        };
-        this.setState({
-          ...updatedGoal,
-          current_savings: this.getTotalSavings(updatedGoal.transaction_history)
-        });
-
+        this.getGoal();
       });
 
   }
@@ -185,7 +172,9 @@ export default class GoalDetails extends React.Component {
 
   getCardTitle() {
     return (
+
       <div className={`goal-card-title ${this.props.params.color}`}>
+
         <span className="goal-card"> {this.state.goal_name}</span>
       </div>
     );
@@ -220,7 +209,7 @@ export default class GoalDetails extends React.Component {
       );
 
     });
-    return (transHistory);
+    return transHistory;
   }
 
   getTransDate() {

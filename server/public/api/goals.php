@@ -24,6 +24,7 @@ transaction_history.transaction_amount
 FROM goal_details JOIN transaction_history
 ON goal_details.goal_id = transaction_history.goal_id
 {$whereClause}
+ORDER BY transaction_history.transaction_id DESC
 ";
 
 
