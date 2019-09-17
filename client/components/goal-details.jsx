@@ -24,6 +24,7 @@ export default class GoalDetails extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   componentDidMount(props) {
@@ -93,18 +94,20 @@ export default class GoalDetails extends React.Component {
     });
   }
 
-  handleSubmit(event) {
+  handleSubmit(event, direction = 1) {
     event.preventDefault();
-    this.amountChange();
+    this.amountChange(direction);
   }
 
-  amountChange() {
+  amountChange(direction) {
+
     fetch(`/api/transaction.php`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        amount_changed: this.state.amount_changed,
-        goal_id: this.state.goal_id
+        amount_changed: direction * this.state.amount_changed,
+        goal_id: this.state.goal_id,
+        name: ''
       })
     })
       .then(response => {
@@ -144,9 +147,10 @@ export default class GoalDetails extends React.Component {
   }
 
   addOrRemoveButtons() {
+    // onSubmit={this.handleSubmit}
     return (
       <React.Fragment>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <div className="add-or-remove-funds">
             <input
               type="text"
@@ -158,12 +162,21 @@ export default class GoalDetails extends React.Component {
             <div className="Line"></div>
           </div>
           <div className="buttonContainer">
-            <button type="submit" name="submit" className="add-button">
-            </button>
-            <button type="submit subtract" name="submit" className="subtract-button">
+            <button
+              type="submit"
+              name="subtract"
+              className="subtract-button"
+              onClick={e => this.handleSubmit(e, -1)}
+            >-</button>
+            <button
+              type="submit"
+              name="add"
+              className="add-button"
+              onClick={e => this.handleSubmit(e, 1)}
+            >
+              +
             </button>
           </div>
-
         </form>
       </React.Fragment>
     );

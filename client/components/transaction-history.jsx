@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  inDollars
+} from './helper.js';
 
 export default function TransactionHistory(props) {
 
@@ -7,7 +10,7 @@ export default function TransactionHistory(props) {
       <div className="transContainer">
 
         <span className="trans-card-title">{props.date}</span>
-        <span className="trans-amount">{props.amount}</span>
+        <span className="trans-amount">{inDollars(props.amount)}</span>
 
       </div>
 
