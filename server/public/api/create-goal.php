@@ -1,17 +1,11 @@
 <?php
 
 require_once('./functions.php');
-
 set_exception_handler('error_handler');
-
 startup();
-
 set_error_handler('error_handler');
-
 require_once('./db_connection.php');
-
 $json_input = file_get_contents('php://input');
-
 $obj = json_decode($json_input, true);
 
 $goal_name = $obj['goal_name'];
@@ -26,7 +20,7 @@ VALUES('$goal_name', '$savings_target', now(), '$goal_completion_date', '$curren
 $result = mysqli_query($conn, $query);
 
 if ($result) {
-    print(json_encode(['message'=>"New record created successfully"]));
+    print(json_encode(['message'=>"New goal created successfully"]));
 } else {
     http_response_code(500);
     print(json_encode(['error'=>mysqli_error($conn)]));
@@ -37,7 +31,7 @@ $query2 = "INSERT INTO `transaction_history`(`goal_id`, `transaction_date`, `tra
 VALUES ({$last_id}, \"{$transaction_date}\", {$current_savings})";
 
 if ($result) {
-    print(json_encode(['message' => "New record created successfully"]));
+    print(json_encode(['message' => "New transaction created successfully"]));
 } else {
     http_response_code(500);
     print(json_encode(['error' => mysqli_error($conn)]));
