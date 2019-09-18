@@ -91,9 +91,9 @@ body {
 .goal-card{
   display             : flex;
   position            : relative;
-  margin:             : auto;
-  top:                : 34px;
-  bottom:             : 34px;
+  margin             : auto;
+  top               : 34px;
+  bottom             : 34px;
   width               : 327px;
   height              : 152px;
   font-family         : "PublicaPlay-UltraLight", Helvetica, Arial, serif;
