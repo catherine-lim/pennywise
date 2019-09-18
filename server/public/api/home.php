@@ -13,9 +13,9 @@ require_once('./db_connection.php');
 
 $query =
 
-    "SELECT `goal_id`, `goal_name`, `savings_target`, `goal_completion_date`, `current_savings`, `is_completed`
-
-    FROM goal_details ORDER BY `is_completed`" ;
+    "SELECT goal_details.goal_id, goal_details.goal_name, goal_details.savings_target, goal_details.goal_completion_date, goal_details.current_savings, goal_details.is_completed, transaction_history.transaction_amount 
+    FROM goal_details 
+    JOIN transaction_history ON goal_details.goal_id = transaction_history.goal_id";
 
 $result = mysqli_query($conn, $query);
 

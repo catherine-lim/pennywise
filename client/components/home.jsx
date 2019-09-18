@@ -84,9 +84,9 @@ export default class Home extends React.Component {
 
         {this.generateCards()}
 
-        <div className={`goal-card gray`}>
+        {/* <div className={`goal-card gray`}>
           <span className="goal-card-title">Completed</span>
-        </div>
+        </div> */}
       </React.Fragment>
     );
   }
