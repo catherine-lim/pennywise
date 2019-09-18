@@ -33,11 +33,9 @@ export default class Home extends React.Component {
   }
 
   weeklyGoalsTotal() {
-
     var weeklyGoals = this.dailyGoalsTotal() * 7;
 
     return weeklyGoals;
-    // return weeklyGoal(this.state.goals[i]));
 
   }
 
