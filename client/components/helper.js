@@ -25,7 +25,7 @@ export function inDollars(value) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
-  }).format(value / 100);
+  }).format(value);
 }
 
 export function dailyGoal(goal) {

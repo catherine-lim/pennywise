@@ -227,7 +227,7 @@ body {
 }
 
 .progress-bar {
-  margin: 10px 12px -4px 14px;
+  margin: 10px 12px 5px 0px;
   /* margin-left: 12px;
   margin-right: 12px;
   margin-top: 10px;
@@ -275,7 +275,7 @@ body {
 }
 
 .Line2 {
-  margin-left: 35px;
+  margin-left: 18px;
   margin-top: -8px;
   width: 338px;
   height: 2px;
