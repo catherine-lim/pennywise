@@ -29,7 +29,10 @@ export function inDollars(value) {
 }
 
 export function dailyGoal(goal) {
-  var daysLeft = differenceInDays(goal);
+  var daysLeft = 0;
+  if (differenceInDays(goal) === 0) {
+    daysLeft = 1;
+  } else daysLeft = differenceInDays(goal);
   var amountLeftToSave = goal.savings_target - goal.current_savings;
   var dailyGoalVar = amountLeftToSave / daysLeft;
   return (dailyGoalVar);

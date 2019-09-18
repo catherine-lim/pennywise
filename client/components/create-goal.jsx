@@ -32,7 +32,6 @@ export default class CreateGoal extends React.Component {
       .then(response => {
         response.json();
         this.props.setView('home', {});
-
       });
   }
 

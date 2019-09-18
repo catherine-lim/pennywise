@@ -15,7 +15,7 @@ $query =
 
     "SELECT `goal_id`, `goal_name`, `savings_target`, `goal_completion_date`, `current_savings`, `is_completed`
 
-    FROM goal_details ORDER BY `is_completed`" ;
+    FROM goal_details ORDER BY `goal_id` DESC" ;
 
 $result = mysqli_query($conn, $query);
 
