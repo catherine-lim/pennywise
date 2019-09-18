@@ -54,7 +54,7 @@ export default class GoalDetails extends React.Component {
     return (
       <div className="progress-bar">
         <div className="bar-background">
-          <div className="bar-green" style={styling}>
+          <div className="bar-green" style={styling} >
 
           </div>
         </div>
