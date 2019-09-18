@@ -33,4 +33,6 @@ while ($row = mysqli_fetch_assoc($result)) {
   $output[] = $row;
 };
 
+
+
 print(json_encode($output));
