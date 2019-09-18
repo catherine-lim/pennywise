@@ -103,6 +103,10 @@ export default class GoalDetails extends React.Component {
   handleSubmit(event, direction = 1) {
     event.preventDefault();
     this.amountChange(direction);
+    this.setState({
+      amount_changed: ''
+    });
+
   }
 
   amountChange(direction) {
@@ -120,7 +124,6 @@ export default class GoalDetails extends React.Component {
         return response.json();
       })
       .then(transaction => {
-
         this.getGoal();
       });
 
@@ -148,26 +151,23 @@ export default class GoalDetails extends React.Component {
               name="amount_changed"
               value={this.state.amount_changed}
               onChange={this.handleChange}
-              placeholder="add or remove funds"
+              placeholder="add or remove funds in $"
             ></input>
-            {/* <div className="Line"></div> */}
           </div>
-          {/* <div className="buttonContainer"> */}
+
+          <button
+            type="submit"
+            name="add"
+            className="add-button"
+            onClick={e => this.handleSubmit(e, 1)}
+          >+</button>
           <button
             type="submit"
             name="subtract"
             className="subtract-button"
             onClick={e => this.handleSubmit(e, -1)}
           >-</button>
-          <button
-            type="submit"
-            name="add"
-            className="add-button"
-            onClick={e => this.handleSubmit(e, 1)}
-          >
-              +
-          </button>
-          {/* </div> */}
+
         </form>
       </React.Fragment>
     );
@@ -185,7 +185,8 @@ export default class GoalDetails extends React.Component {
 
   getDaysRemaining() {
     return (
-      <div className="daysRemaining">{differenceInDays(this.state)} <span className="Days"> days </span></div>
+      <div className="daysRemaining">{differenceInDays(this.state)}
+        <span className="Days"> days </span></div>
     );
   }
 

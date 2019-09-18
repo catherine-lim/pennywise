@@ -1,6 +1,6 @@
 import React from 'react';
 import GoalCard from './goal-card';
-import { dailyGoal, inDollars } from './helper.js';
+import { dailyGoal, inDollars, weeklyGoal } from './helper.js';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -33,7 +33,7 @@ export default class Home extends React.Component {
   }
 
   weeklyGoalsTotal() {
-    var weeklyGoals = this.dailyGoalsTotal() * 7;
+    var weeklyGoals = weeklyGoal(this.dailyGoalsTotal());
 
     return weeklyGoals;
 
