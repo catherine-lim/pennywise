@@ -41,19 +41,19 @@ export default class CreateGoal extends React.Component {
 
             <label className="secondStatement">What are you saving for ?</label>
             <br></br>
-            <input type="text" name="goal_name" value={this.state.goal_name} onChange={this.handleChange} id="goal_name" className="form-control" placeholder="Example : Computer" />
+            <input type="text" pattern="[^a-zA-Z0-9'- ]" required="required" name="goal_name" value={this.state.goal_name} onChange={this.handleChange} id="goal_name" className="form-control" placeholder="Example : Computer" />
           </div>
 
           <div className="form-group">
             <label className="secondStatement">How much does it cost?</label>
             <br></br>
-            <input type="text" name="savings_target" value={this.state.savings_target} onChange={this.handleChange} id="savings_target" className="form-control" placeholder="100" />
+            <input type="text" pattern="\d+" title="please enter number only" required="required" name="savings_target" value={this.state.savings_target} onChange={this.handleChange} id="savings_target" className="form-control" placeholder="100" />
           </div>
 
           <div className="form-group">
             <label className="secondStatement">How much are you starting with?</label>
             <br></br>
-            <input type="text" name="current_savings" value={this.state.current_savings} onChange={this.handleChange} id="current_savings" className="form-control" placeholder="10" />
+            <input type="text" pattern="\d+" title="please enter number only" required="required" name="current_savings" value={this.state.current_savings} onChange={this.handleChange} id="current_savings" className="form-control" placeholder="10" />
           </div>
 
           <div className="form-group">
