@@ -25,11 +25,14 @@ export function inDollars(value) {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
-  }).format(value / 100);
+  }).format(value);
 }
 
 export function dailyGoal(goal) {
-  var daysLeft = differenceInDays(goal);
+  var daysLeft = 0;
+  if (differenceInDays(goal) === 0) {
+    daysLeft = 1;
+  } else daysLeft = differenceInDays(goal);
   var amountLeftToSave = goal.savings_target - goal.current_savings;
   var dailyGoalVar = amountLeftToSave / daysLeft;
   return (dailyGoalVar);
@@ -38,10 +41,23 @@ export function dailyGoal(goal) {
 
 export function weeklyGoal(goal) {
   var daysLeft = differenceInDays(goal);
-  var weeks = (daysLeft / 7);
-  var amountLeftToSave = goal.savings_target - goal.current_savings;
-  var weeklyGoal = amountLeftToSave / weeks;
+  if (daysLeft >= 7) {
+    var weeks = (daysLeft / 7);
+    var amountLeftToSave = goal.savings_target - goal.current_savings;
+    var weeklyGoal = amountLeftToSave / weeks;
+    return ((weeklyGoal));
+  } else {
+    return (goal.savings_target - goal.current_savings);
 
-  return (weeklyGoal);
-
+  }
 }
+
+// export function getTotalSavings(transactionHistory) {
+
+//   var total = 0;
+//   for (var i = 0; i < transactionHistory.length; i++) {
+//     total += Number(transactionHistory[i].transaction_amount);
+//   }
+
+//   return total;
+// }

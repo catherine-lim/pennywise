@@ -54,7 +54,7 @@ export default class GoalDetails extends React.Component {
     return (
       <div className="progress-bar">
         <div className="bar-background">
-          <div className="bar-green" style={styling}>
+          <div className="bar-green" style={styling} >
 
           </div>
         </div>
@@ -64,18 +64,22 @@ export default class GoalDetails extends React.Component {
 
   newDailyGoal() {
     return (
-      <div className="dailyGoal">
-        {inDollars(dailyGoal(this.state))}
-        <div className="Day"> /day </div>
+      <div>
+        <div className="dailyGoal">
+          {inDollars(dailyGoal(this.state))}
+        </div>
+        <div className="dailyDays"> /day </div>
       </div>
     );
   }
 
   newWeeklyGoal() {
     return (
-      <div className="weeklyGoal">
-        {inDollars(weeklyGoal(this.state))}
-        <div className="week">/days</div>
+      <div>
+        <div className="weeklyGoal">
+          {inDollars(weeklyGoal(this.state))}
+        </div>
+        <div className="weeklyWeeks"> /week </div>
       </div>
     );
   }
@@ -99,6 +103,10 @@ export default class GoalDetails extends React.Component {
   handleSubmit(event, direction = 1) {
     event.preventDefault();
     this.amountChange(direction);
+    this.setState({
+      amount_changed: ''
+    });
+
   }
 
   amountChange(direction) {
@@ -116,7 +124,6 @@ export default class GoalDetails extends React.Component {
         return response.json();
       })
       .then(transaction => {
-
         this.getGoal();
       });
 
@@ -139,30 +146,32 @@ export default class GoalDetails extends React.Component {
         <form>
           <div className="add-or-remove-funds">
             <input
+              className="goalDetailsInput"
               type="text"
               name="amount_changed"
               value={this.state.amount_changed}
               onChange={this.handleChange}
-              placeholder="add or remove funds"
+              placeholder="add or remove funds in $"
             ></input>
-            {/* <div className="Line"></div> */}
           </div>
-          {/* <div className="buttonContainer"> */}
-          <button
-            type="submit"
-            name="subtract"
-            className="subtract-button"
-            onClick={e => this.handleSubmit(e, -1)}
-          >-</button>
+
           <button
             type="submit"
             name="add"
             className="add-button"
             onClick={e => this.handleSubmit(e, 1)}
           >
-              +
+            <span className="plus-symbol">+</span>
           </button>
-          {/* </div> */}
+          <button
+            type="submit"
+            name="subtract"
+            className="subtract-button"
+            onClick={e => this.handleSubmit(e, -1)}
+          >
+            <span className="minus-symbol">-</span>
+          </button>
+
         </form>
       </React.Fragment>
     );
@@ -180,7 +189,8 @@ export default class GoalDetails extends React.Component {
 
   getDaysRemaining() {
     return (
-      <div className="daysRemaining">{differenceInDays(this.state)} days</div>
+      <div className="daysRemaining">{differenceInDays(this.state)}
+        <span className="Days"> days left </span></div>
     );
   }
 
@@ -215,7 +225,7 @@ export default class GoalDetails extends React.Component {
       <React.Fragment>
         <div className="Date">Date</div>
         <div className="Amount">Amount</div>
-        <div className="Line"></div>
+        <div className="Line2"></div>
       </React.Fragment>
     );
   }
