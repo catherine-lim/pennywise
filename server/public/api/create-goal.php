@@ -28,5 +28,6 @@ $last_id = mysqli_insert_id($conn);
 $query2 = "INSERT INTO `transaction_history`(`goal_id`, `transaction_date`, `transaction_amount`)
 VALUES ({$last_id}, \"{$transaction_date}\", {$current_savings})";
 
+
 $result = mysqli_query($conn, $query2);
 ?>
