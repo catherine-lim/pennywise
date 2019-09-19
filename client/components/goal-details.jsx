@@ -62,25 +62,21 @@ export default class GoalDetails extends React.Component {
     );
   }
 
-  newDailyGoal() {
+  newDailyAndWeeklyGoal() {
     return (
-      <React.Fragment>
-        <div className="dailyGoal">
-          {inDollars(dailyGoal(this.state))}
-        </div>
-        <div className="dailyDays"> /day </div>
-      </React.Fragment>
-    );
-  }
+      <div>
 
-  newWeeklyGoal() {
-    return (
-      <React.Fragment>
-        <div className="weeklyGoal">
-          {inDollars(weeklyGoal(this.state))}
+        <div>
+          <div className="dailyGoal">{inDollars(dailyGoal(this.state))}</div>
+          <div className="dailyDays"> /day </div>
         </div>
-        <div className="weeklyWeeks"> /week </div>
-      </React.Fragment>
+
+        <div>
+          <div className="weeklyGoal">{inDollars(weeklyGoal(this.state))}</div>
+          <div className="weeklyWeeks"> /week </div>
+        </div>
+
+      </div>
     );
   }
 
@@ -145,7 +141,7 @@ export default class GoalDetails extends React.Component {
         <form>
           <div className="goalDetailsInput">
             <input
-              // className="goalDetailsInput"
+              className="goalDetailsInput"
               type="text"
               name="amount_changed"
               value={this.state.amount_changed}
@@ -237,8 +233,9 @@ export default class GoalDetails extends React.Component {
         {this.getCardTitle()}
         {this.getProgress()}
         {this.towardsSavings()}
-        {this.newDailyGoal()}
-        {this.newWeeklyGoal()}
+        {/* {this.newDailyGoal()}
+        {this.newWeeklyGoal()} */}
+        {this.newDailyAndWeeklyGoal()}
         {this.addOrRemoveButtons()}
         {this.makeTransactionHistory()}
         {this.getTransDate()}

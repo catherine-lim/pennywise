@@ -83,16 +83,13 @@ body {
 
 
 }
-
 .new-goal-text {
   align-self: center;
   color: #2cc0c8;
 }
-
 .minusTransaction {
   color: #ff0083;
 }
-
 .plusTransaction {
   color: #2cc0c8;
 }
@@ -410,7 +407,7 @@ body {
   font-size: 20px;
   font-weight: 800;
   font-style: italic;
-  color: #2cc0c8;
+  color: #219096;
   margin-top: 20px;
 
 
@@ -481,12 +478,12 @@ body {
   border: none;
   border-bottom: 1px solid #e0e0e0;
   text-align: center;
-  font-size: 15px;
+  font-size: 17px;
 }
 
 input[type=date] {
-  margin-left:48px;
-  font-size: 15px;
+  margin-left:3px;
+  font-size: 17px;
 }
 
 

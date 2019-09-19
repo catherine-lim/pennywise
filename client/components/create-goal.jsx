@@ -44,7 +44,7 @@ export default class CreateGoal extends React.Component {
             <label className="formQuestion">What are you saving for ?</label>
             <br></br>
 
-            <input type="text" name="goal_name" value={this.state.goal_name} required pattern="[A-Za-z0-9 ']+" onChange={this.handleChange} id="goal_name" className="form-control" placeholder="Goal: Computer" />
+            <input type="text" name="goal_name" value={this.state.goal_name} required pattern="[A-Za-z0-9 ']+" onChange={this.handleChange} id="goal_name" className="form-control" placeholder="Example Goal: Computer" />
 
           </div>
 
