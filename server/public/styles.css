@@ -23,6 +23,7 @@
   src: url('./fonts/PublicaPlay-Light.ttf') format("truetype");
 }
 body {
+
   margin: 0;
   display: flexbox;
   align-content: center;
@@ -368,6 +369,7 @@ body {
 
 
 .onBoarding{
+  
   position            : relative;
   margin              : auto;
   width               : 327px;
@@ -384,8 +386,9 @@ body {
 }
 
 .logo{
-  height:15vh;
+  height:25vh;
   width: 50vw;
+  margin-left: 73px;
 
 }
 
@@ -425,7 +428,7 @@ body {
   font-style: normal;
   color: #2cc0c8;
   text-align: center;
-  margin-left: 70px;
+  margin-left: 73px;
 
 }
 .getStartedButton{
