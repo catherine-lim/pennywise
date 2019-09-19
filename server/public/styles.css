@@ -32,7 +32,7 @@ body {
 
 .header {
   position            : relative;
-  background-color    : #28a4b6;
+  background-color    : #2cc0c8;
   top                 : 0px;
   height              : 110px;
   width               : 100vw;
@@ -198,19 +198,7 @@ body {
   overflow: hidden;
 }
 
-/* .day, .week {
-  width: 153px;
-  height: 33px;
- font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
-  font-size: 24px;
-  font-weight: 200;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: right;
-  color: #2cc0c8;
-} */
+
 
  .weeklyGoal{
   float: right;
