@@ -64,23 +64,23 @@ export default class GoalDetails extends React.Component {
 
   newDailyGoal() {
     return (
-      <div>
+      <React.Fragment>
         <div className="dailyGoal">
           {inDollars(dailyGoal(this.state))}
         </div>
         <div className="dailyDays"> /day </div>
-      </div>
+      </React.Fragment>
     );
   }
 
   newWeeklyGoal() {
     return (
-      <div>
+      <React.Fragment>
         <div className="weeklyGoal">
           {inDollars(weeklyGoal(this.state))}
         </div>
         <div className="weeklyWeeks"> /week </div>
-      </div>
+      </React.Fragment>
     );
   }
 
@@ -140,13 +140,12 @@ export default class GoalDetails extends React.Component {
   }
 
   addOrRemoveButtons() {
-    // onSubmit={this.handleSubmit}
     return (
       <React.Fragment>
         <form>
-          <div className="add-or-remove-funds">
+          <div className="goalDetailsInput">
             <input
-              className="goalDetailsInput"
+              // className="goalDetailsInput"
               type="text"
               name="amount_changed"
               value={this.state.amount_changed}
@@ -198,7 +197,7 @@ export default class GoalDetails extends React.Component {
     return (
       <div>
         <div className="Transaction-History">Transaction History</div>
-        <div className="Line2"></div>
+        {/* <div className="Line2"></div> */}
       </div>
     );
   }
@@ -225,7 +224,7 @@ export default class GoalDetails extends React.Component {
       <React.Fragment>
         <div className="Date">Date</div>
         <div className="Amount">Amount</div>
-        <div className="Line2"></div>
+        <div className="dateAmountLine"></div>
       </React.Fragment>
     );
   }

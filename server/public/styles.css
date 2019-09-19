@@ -35,20 +35,20 @@ body {
   background-color    : #28a4b6;
 
   top                 : 0px;
-  height              : 110px;
+  height              : 75px;
   width               : 100vw;
   text-align          : center;
 }
 
 .home-button {
-  top                 : 43px;
+  top                 : 22px;
   position            : absolute;
   left                : 30px;
   color               :#ffffff;
 }
 
 .header-title {
-  top                 : 43px;
+  top                 : 22px;
   position            : relative;
   font-family         : "PublicaPlay-BoldItalic", Helvetica, Arial, serif;
   font-size           : 36px;
@@ -97,6 +97,8 @@ body {
   color: #2cc0c8;
 }
 .goal-card{
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   position: relative;
   /* margin: auto; */
@@ -196,12 +198,13 @@ body {
 }
 
 .dailyDays {
-  /* display: inline-block; */
+  /* display: block;
   width: 174px;
-  height: 33px;
+  height: 33px; */
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
-  font-size: 24px;
-  margin-left: 62px;
+  font-size: 18px;
+  /* margin-left: 62px;
+  margin-right: 0; */
   font-weight: normal;
   font-style: italic;
   font-stretch: normal;
@@ -321,12 +324,22 @@ body {
   background-color: #e0e0e0;
 }
 
+.dateAmountLine {
+  margin-left: 18px;
+  margin-top: -8px;
+  margin-bottom: 20px;
+  width: 338px;
+  height: 2px;
+  background-color: #e0e0e0;
+}
+
 .add-button, .subtract-button {
-  position: relative;
+  display: inline-block;
+  position: static;
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  margin-top: 90px;
+  margin-top: 35px;
   /* margin-left: auto;
   margin-right: auto; */
 }
@@ -342,11 +355,11 @@ body {
 }
 
 .Transaction-History, .getTransAmount {
-  margin-top: 25px;
+  margin-top: 26px;
   width: 375px;
   height: 40px;
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
-  font-size: 27.0px;
+  font-size: 25px;
   font-weight: 200;
   font-style: normal;
   font-stretch: normal;
@@ -377,6 +390,17 @@ body {
   height:15vh;
   width: 50vw;
 
+}
+
+.goalDetailsInput {
+  background: transparent;
+  margin-top: 32px;
+  margin-left:20px;
+  width: 317px;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  font-size:18px;
 }
 
 .secondStatement, .formQuestion{
@@ -451,7 +475,7 @@ body {
 .saveGoalText{
   margin-top: 7px;
 }
-input[type=text],input[type=number] {
+.form-control {
   background: transparent;
   width: 317px;
   border: none;
@@ -467,19 +491,9 @@ input[type=date] {
 
 
 
-
-.goalDetailsInput {
-  background: transparent;
-  width: 317px;
-  border: none;
-  border-bottom: 1px solid #e0e0e0;
-  text-align: center;
-  font-size:18px;
-}
-
 .Date, .Amount {
   display: inline-block;
-  margin-top: 22px;
+  margin-top: 16px;
   margin-bottom: -15px;
   margin-left: 14px;
   width: 163px;
