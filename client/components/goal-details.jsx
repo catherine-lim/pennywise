@@ -62,24 +62,34 @@ export default class GoalDetails extends React.Component {
     );
   }
 
-  newDailyGoal() {
+  newDailyAndWeeklyGoal() {
     return (
       <React.Fragment>
-        <div className="dailyGoal">
-          {inDollars(dailyGoal(this.state))}
-        </div>
-        <div className="dailyDays"> /day </div>
-      </React.Fragment>
-    );
-  }
 
-  newWeeklyGoal() {
-    return (
-      <React.Fragment>
-        <div className="weeklyGoal">
-          {inDollars(weeklyGoal(this.state))}
+        <div className="card-container">
+          <div className="goals-row">
+
+            <div className="goals-total-container">
+              <div className="daily-totals-text">
+                {inDollars(dailyGoal(this.state))}
+              </div>
+              <div className="per-day-text">
+                /day
+              </div>
+            </div>
+
+            <div className="goals-total-container">
+              <div className="weekly-totals-text">
+                {inDollars(weeklyGoal(this.state))}
+
+              </div>
+              <div className="per-week-text">
+                /week
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div className="weeklyWeeks"> /week </div>
       </React.Fragment>
     );
   }
@@ -237,8 +247,7 @@ export default class GoalDetails extends React.Component {
         {this.getCardTitle()}
         {this.getProgress()}
         {this.towardsSavings()}
-        {this.newDailyGoal()}
-        {this.newWeeklyGoal()}
+        {this.newDailyAndWeeklyGoal()}
         {this.addOrRemoveButtons()}
         {this.makeTransactionHistory()}
         {this.getTransDate()}
