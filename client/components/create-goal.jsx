@@ -41,29 +41,33 @@ export default class CreateGoal extends React.Component {
         <form onSubmit={this.handleSubmit} >
           <div className="form-group">
 
-            <label className="secondStatement">What are you saving for ?</label>
+            <label className="formQuestion">What are you saving for ?</label>
             <br></br>
-            <input type="text" name="goal_name" value={this.state.goal_name} onChange={this.handleChange} id="goal_name" className="form-control" placeholder="Example : Computer" />
+            <input type="text" name="goal_name" value={this.state.goal_name} onChange={this.handleChange} id="goal_name" className="form-control" placeholder="Goal : Computer" />
           </div>
 
           <div className="form-group">
-            <label className="secondStatement">How much does it cost?</label>
+            <label className="formQuestion">How much does it cost?</label>
             <br></br>
-            <input type="text" title="please enter numbers only" name="savings_target" value={this.state.savings_target} onChange={this.handleChange} id="savings_target" className="form-control" placeholder="100" />
+
+            <input type="text" pattern="\d+" title="please enter numbers only" name="savings_target" value={this.state.savings_target} onChange={this.handleChange} id="savings_target" className="form-control" placeholder="Please enter amount in $" />
+
           </div>
 
           <div className="form-group">
-            <label className="secondStatement">How much are you starting with?</label>
+            <label className="formQuestion">How much are you starting with?</label>
             <br></br>
-            <input type="text" title="please enter numbers only" name="current_savings" value={this.state.current_savings} onChange={this.handleChange} id="current_savings" className="form-control" placeholder="10" />
+
+            <input type="text" pattern="\d+" title="please enter numbers only" name="current_savings" value={this.state.current_savings} onChange={this.handleChange} id="current_savings" className="form-control" placeholder="Please enter amount in $" />
+
           </div>
 
           <div className="form-group">
-            <label className="secondStatement">When do you need it by?</label>
+            <label className="formQuestion">When do you need it by?</label>
             <br></br>
             <input type="date" name="goal_completion_date" value={this.state.goal_completion_date} onChange={this.handleChange} id="goal_completion_date" className="form-control" />
           </div>
-          <button type="submit" name="submit" className="saveGoalButton" > <p>Save</p> </button>
+          <button type="submit" name="submit" className="saveGoalButton" > <p className="saveGoalText">Save</p> </button>
         </form>
 
       </React.Fragment>

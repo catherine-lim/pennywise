@@ -67,19 +67,19 @@ export default class GoalDetails extends React.Component {
       <div>
         <div className="dailyGoal">
           {inDollars(dailyGoal(this.state))}
-
         </div>
-        <div className="Day"> /day </div>
-
+        <div className="dailyDays"> /day </div>
       </div>
     );
   }
 
   newWeeklyGoal() {
     return (
-      <div className="weeklyGoal">
-        {inDollars(weeklyGoal(this.state))}
-        <div className="week">/days</div>
+      <div>
+        <div className="weeklyGoal">
+          {inDollars(weeklyGoal(this.state))}
+        </div>
+        <div className="weeklyWeeks"> /week </div>
       </div>
     );
   }
@@ -160,13 +160,17 @@ export default class GoalDetails extends React.Component {
             name="add"
             className="add-button"
             onClick={e => this.handleSubmit(e, 1)}
-          >+</button>
+          >
+            <span className="plus-symbol">+</span>
+          </button>
           <button
             type="submit"
             name="subtract"
             className="subtract-button"
             onClick={e => this.handleSubmit(e, -1)}
-          >-</button>
+          >
+            <span className="minus-symbol">-</span>
+          </button>
 
         </form>
       </React.Fragment>
@@ -186,7 +190,7 @@ export default class GoalDetails extends React.Component {
   getDaysRemaining() {
     return (
       <div className="daysRemaining">{differenceInDays(this.state)}
-        <span className="Days"> days </span></div>
+        <span className="Days"> days left </span></div>
     );
   }
 

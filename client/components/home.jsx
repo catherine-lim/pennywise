@@ -32,7 +32,8 @@ export default class Home extends React.Component {
     return dailyGoalsArray.reduce((a, b) => a + b, 0);
   }
 
-  weeklyGoalsTotal() {
+  weeklyGoalsTotal(i) {
+
     var weeklyGoals = this.dailyGoalsTotal() * 7;
 
     return weeklyGoals;
