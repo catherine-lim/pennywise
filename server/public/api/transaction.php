@@ -11,6 +11,7 @@ $amount_changed = $obj['amount_changed'];
 
 
 
+
 $query =
 "INSERT INTO `transaction_history`(`goal_id`, `transaction_date`, `transaction_amount`)
 VALUES ({$goal_id}, \"{$transaction_date}\", {$amount_changed})";

@@ -10,8 +10,10 @@ export default function TransactionHistory(props) {
       <div className="transContainer">
 
         <span className="trans-card-title transactionInputDate">{props.date}</span>
-        <span className="trans-amount transactionInputAmount">{inDollars(props.amount)}</span>
-
+        {props.amount >= 0 ? (
+          <span className="trans-amount plusTransaction transactionInputAmount">{inDollars(props.amount)}</span>)
+          : (<span className="trans-amount minusTransaction transactionInputAmount">{inDollars(props.amount)}</span>
+          )}
       </div>
 
     </React.Fragment>

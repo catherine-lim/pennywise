@@ -88,6 +88,13 @@ body {
   color: #2cc0c8;
 }
 
+.minusTransaction {
+  color: #ff0083;
+}
+
+.plusTransaction {
+  color: #2cc0c8;
+}
 .goal-card{
   display: flex;
   position: relative;
@@ -441,7 +448,6 @@ input[type=text],input[type=number]{
   line-height: normal;
   letter-spacing: normal;
   text-align: right;
-  color: #2cc0c8;
 }
 
 .transactionInputDate, .transactionInputAmount {
