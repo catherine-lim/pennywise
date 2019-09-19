@@ -415,8 +415,7 @@ body {
   font-weight: 500;
   font-style: normal;
   color: #2cc0c8;
-  text-align: center;
-  margin-left: 70px;
+  /* margin-left: 70px; */
 
 }
 .getStartedButton{
