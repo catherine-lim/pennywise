@@ -14,6 +14,7 @@ $savings_target = $obj['savings_target'];
 $current_savings = $obj['current_savings'];
 $goal_completion_date = $obj['goal_completion_date'];
 $transaction_date = date('Y-m-d');
+$goal_name = str_replace("'", "''", $goal_name);
 
 $query = "INSERT INTO goal_details (goal_name, savings_target, goal_start_date, goal_completion_date, current_savings, is_completed)
 VALUES('$goal_name', '$savings_target', now(), '$goal_completion_date', '$current_savings', 0)";
