@@ -64,18 +64,26 @@ export default class GoalDetails extends React.Component {
 
   newDailyAndWeeklyGoal() {
     return (
-      <div>
+      <div className="card-container">
+        <div className="goals-row">
 
-        <div>
-          <div className="dailyGoal">{inDollars(dailyGoal(this.state))}</div>
-          <div className="dailyDays"> /day </div>
+          <div className="goals-total-container">
+            <div className="daily-totals-text">
+              {inDollars(dailyGoal(this.state))}
+            </div>
+            <div className="per-day-text">
+                /day
+            </div>
+          </div>
+          <div className="goals-total-container">
+            <div className="weekly-totals-text">
+              {inDollars(weeklyGoal(this.state))}
+            </div>
+            <div className="per-week-text">
+              /week
+            </div>
+          </div>
         </div>
-
-        <div>
-          <div className="weeklyGoal">{inDollars(weeklyGoal(this.state))}</div>
-          <div className="weeklyWeeks"> /week </div>
-        </div>
-
       </div>
     );
   }
