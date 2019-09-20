@@ -4,6 +4,7 @@ function Onboarding(props) {
   return (
     <React.Fragment>
       <div className="onBoarding">
+
         <p className="someStatement">Save Smarter</p>
 
         <p className="getStartedNow">Set Goals</p>

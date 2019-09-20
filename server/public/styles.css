@@ -35,20 +35,20 @@ body {
   background-color    : #28a4b6;
 
   top                 : 0px;
-  height              : 75px;
+  height              : 110px;
   width               : 100vw;
   text-align          : center;
 }
 
 .home-button {
-  top                 : 22px;
+  top                 : 43px;
   position            : absolute;
   left                : 30px;
   color               :#ffffff;
 }
 
 .header-title {
-  top                 : 22px;
+  top                 : 43px;
   position            : relative;
   font-family         : "PublicaPlay-BoldItalic", Helvetica, Arial, serif;
   font-size           : 36px;
@@ -83,19 +83,20 @@ body {
 
 
 }
+
 .new-goal-text {
   align-self: center;
   color: #2cc0c8;
 }
+
 .minusTransaction {
   color: #ff0083;
 }
+
 .plusTransaction {
   color: #2cc0c8;
 }
 .goal-card{
-  margin-top: 10px;
-  margin-bottom: 10px;
   display: flex;
   position: relative;
   /* margin: auto; */
@@ -195,13 +196,12 @@ body {
 }
 
 .dailyDays {
-  /* display: block;
+  /* display: inline-block; */
   width: 174px;
-  height: 33px; */
+  height: 33px;
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
-  font-size: 18px;
-  /* margin-left: 62px;
-  margin-right: 0; */
+  font-size: 24px;
+  margin-left: 62px;
   font-weight: normal;
   font-style: italic;
   font-stretch: normal;
@@ -309,22 +309,12 @@ body {
   background-color: #e0e0e0;
 }
 
-.dateAmountLine {
-  margin-left: 18px;
-  margin-top: -8px;
-  margin-bottom: 20px;
-  width: 338px;
-  height: 2px;
-  background-color: #e0e0e0;
-}
-
 .add-button, .subtract-button {
-  display: inline-block;
-  position: static;
+  position: relative;
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  margin-top: 35px;
+  margin-top: 90px;
   /* margin-left: auto;
   margin-right: auto; */
 }
@@ -340,11 +330,11 @@ body {
 }
 
 .Transaction-History, .getTransAmount {
-  margin-top: 26px;
+  margin-top: 25px;
   width: 375px;
   height: 40px;
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
-  font-size: 25px;
+  font-size: 27.0px;
   font-weight: 200;
   font-style: normal;
   font-stretch: normal;
@@ -377,17 +367,6 @@ body {
 
 }
 
-.goalDetailsInput {
-  background: transparent;
-  margin-top: 32px;
-  margin-left:20px;
-  width: 317px;
-  border: none;
-  border-bottom: 1px solid #e0e0e0;
-  text-align: center;
-  font-size:18px;
-}
-
 .secondStatement, .formQuestion{
   width: 328px;
   height: 21px;
@@ -395,7 +374,7 @@ body {
   font-size: 20px;
   font-weight: 800;
   font-style: italic;
-  color: #219096;
+  color: #2cc0c8;
   margin-top: 20px;
 
 
@@ -412,7 +391,8 @@ body {
   font-weight: 500;
   font-style: normal;
   color: #2cc0c8;
-  /* margin-left: 70px; */
+  text-align: center;
+  margin-left: 70px;
 
 }
 .getStartedButton{
@@ -459,25 +439,35 @@ body {
 .saveGoalText{
   margin-top: 7px;
 }
-.form-control {
+input[type=text],input[type=number] {
   background: transparent;
   width: 317px;
   border: none;
   border-bottom: 1px solid #e0e0e0;
   text-align: center;
-  font-size: 17px;
+  font-size: 20px;
 }
 
 input[type=date] {
-  margin-left:3px;
-  font-size: 17px;
+  margin-left:48px;
+  font-size: 18px;
 }
 
 
 
+
+.goalDetailsInput {
+  background: transparent;
+  width: 317px;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  font-size:18px;
+}
+
 .Date, .Amount {
   display: inline-block;
-  margin-top: 16px;
+  margin-top: 22px;
   margin-bottom: -15px;
   margin-left: 14px;
   width: 163px;
@@ -510,7 +500,6 @@ input[type=date] {
 }
 
  .transactionInputAmount {
-  text-align: right;
   width: 120px;
   height: 64px;
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
