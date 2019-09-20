@@ -6,6 +6,7 @@ function Onboarding(props) {
       <div className="onBoarding">
 
         <p className="someStatement">Save Smarter</p>
+        <img src="/images/piggybank.png" className="logo"></img>
 
         <p className="getStartedNow">Set Goals</p>
 
