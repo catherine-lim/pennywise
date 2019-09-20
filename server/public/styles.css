@@ -409,7 +409,7 @@ align-self: center;
 
 .secondStatement, .formQuestion{
   width: 328px;
-  height: 21px;
+  height: 40px;
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
   font-size: 20px;
   font-weight: 800;
@@ -421,6 +421,7 @@ align-self: center;
 }
 .formQuestion{
   font-size: 21px;
+  padding-bottom: 50px;
 }
 .getStartedNow{
   margin-top: 30px;
@@ -458,9 +459,12 @@ align-self: center;
   position            : relative;
   margin              : auto;
   text-align          : center;
-  padding:30px;
+  padding:20px;
   margin-top: 20px;
 
+}
+::placeholder {
+  color: rgb(163, 176, 190);
 }
 .saveGoalButton{
   /* float:right; */
