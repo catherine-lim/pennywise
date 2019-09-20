@@ -51,13 +51,3 @@ export function weeklyGoal(goal) {
 
   }
 }
-
-// export function getTotalSavings(transactionHistory) {
-
-//   var total = 0;
-//   for (var i = 0; i < transactionHistory.length; i++) {
-//     total += Number(transactionHistory[i].transaction_amount);
-//   }
-
-//   return total;
-// }
