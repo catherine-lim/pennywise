@@ -66,49 +66,35 @@ export default class Home extends React.Component {
     return (
       <React.Fragment>
         <div className="card-container">
+
           <div className="goals-row">
 
             <div className="goals-total-container">
               <div className="daily-totals-text">
                 {inDollars(this.dailyGoalsTotal())}
               </div>
-              <div className="per-day-text">
-                /day
-              </div>
+              <div className="per-day-text">/day</div>
             </div>
-
             <div className="goals-total-container">
               <div className="weekly-totals-text">
                 {inDollars(this.weeklyGoalsTotal())}
               </div>
-              <div className="per-week-text">
-              /week
-              </div>
+              <div className="per-week-text">/week</div>
             </div>
 
           </div>
 
-          {/* <div className="goals-total-container">
-            <div className="daily-goals-total">
-              <div className="weekly-goals-text-justify">
-                <span className="daily-totals-text">{inDollars(this.weeklyGoalsTotal())}</span><br />
-                <span className="per-day-text">/week</span>
-              </div>
+          <div className="new-goal-row">
+            <div
+              className="new-goal-button"
+              onClick={props =>
+                this.props.setView('creategoal', { goal_id: props.id })}>
+              <span className="new-goal-text">New Goal</span>
             </div>
-          </div>
-
-        </div> */}
-
-          <div
-            className="new-goal-button"
-            onClick={props =>
-              this.props.setView('creategoal', { goal_id: props.id })}>
-            <span className="new-goal-text">New Goal</span>
           </div>
 
           {this.generateCards()}
         </div>
-
       </React.Fragment>
     );
   }
