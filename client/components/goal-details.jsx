@@ -1,6 +1,5 @@
 import React from 'react';
 import { dailyGoal, differenceInDays, weeklyGoal, inDollars } from './helper.js';
-
 import TransactionHistory from './transaction-history';
 
 export default class GoalDetails extends React.Component {
@@ -42,6 +41,15 @@ export default class GoalDetails extends React.Component {
           current_savings: this.getTotalSavings(response.transaction_history)
         });
       });
+  }
+
+  getDaysRemaining() {
+    return (
+      <div>
+        <span className="days-number">{differenceInDays(this.state)}</span>
+        <span className="days-left-text"> days left </span>
+      </div>
+    );
   }
 
   getProgress() {
@@ -189,18 +197,9 @@ export default class GoalDetails extends React.Component {
 
   getCardTitle() {
     return (
-
-      <div className={`goal-card-title ${this.props.params.color}`}>
-
-        <span className="goal-card"> {this.state.goal_name}</span>
+      <div className={`goal-card ${this.props.params.color}`}>
+        <span className="goal-card-title"> {this.state.goal_name}</span>
       </div>
-    );
-  }
-
-  getDaysRemaining() {
-    return (
-      <div className="daysRemaining">{differenceInDays(this.state)}
-        <span className="Days"> days left </span></div>
     );
   }
 
@@ -242,10 +241,17 @@ export default class GoalDetails extends React.Component {
   render() {
 
     return (
+
       <React.Fragment>
-        {this.getDaysRemaining()}
-        {this.getCardTitle()}
-        {this.getProgress()}
+        <div className="card-container">
+          {this.getDaysRemaining()}
+        </div>
+        <div className="card-container">
+          {this.getCardTitle()}
+        </div>
+        <div className="card-container">
+          {this.getProgress()}
+        </div>
         {this.towardsSavings()}
         {this.newDailyAndWeeklyGoal()}
         {this.addOrRemoveButtons()}
@@ -253,6 +259,7 @@ export default class GoalDetails extends React.Component {
         {this.getTransDate()}
         {this.getHistory()}
       </React.Fragment>
+
     );
   }
 }

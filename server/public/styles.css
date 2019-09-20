@@ -99,136 +99,97 @@ body {
 
 }
 
+/* new goal */
+.new-goal-row {
+  position: relative;
+  width:100vw;
+  display: inline-flex;
+  margin-top: 34x;
+  margin-bottom: 34px;
+  justify-content: space-around;
+}
 .new-goal-button {
-    display: flex;
-align-self: center;
+  display: flex;
   width: 327px;
   height: 80px;
-  border: solid 2px #2cc0c8;
+  border: solid 2.5px #2cc0c8;
+  box-sizing: border-box;
   font-family         : "PublicaPlay-UltraLight", Helvetica, Arial, serif;
   font-size: 36px;
-  /* line-height         : 43.0px; */
-  letter-spacing: normal;
   text-align: center;
   color: #2cc0c8;
-  align-items: center;
 }
 .new-goal-text {
   align-self: center;
   margin: auto;
   color: #2cc0c8;
-
 }
-
-.minusTransaction {
-  color: #ff0083;
-}
-.plusTransaction {
-  color: #2cc0c8;
-}
+/* end new goal */
 
 
 
 
 
+/* goal cards */
 .goal-card {
   display             : flex;
   position            : relative;
-  /* margin:             : 24; */
-  margin-top                : 34px;
-  margin-bottom             : 34px;
-  margin-left               : 24px;
-  margin-right              : 24px;
-
+  /* margin-top          : 34px; */
+  margin-bottom       : 34px;
+  margin-left         : 17px;
+  margin-right        : 17px;
   width               : 327px;
   height              : 152px;
   font-family         : "PublicaPlay-UltraLight", Helvetica, Arial, serif;
   font-size           : 36.0px;
   color               : #ffffff;
 }
-
 .goal-card-title {
   margin: auto;
 }
-
 .teal {
   background          : linear-gradient(to left, #182664, #2cc0c8);
 }
-
 .pink {
   background-image    : linear-gradient(to left, #ff5cf7, #e57c65 100%);
 }
-
 .orange {
   background-image    : linear-gradient(to left, #dd003d, #f36a04 51%, #ffde02);
 }
-
 .gray {
   background-image    : linear-gradient(to left, #363535, #cccccc);
 }
-
-
-
-
-.daily-goal {
+.daily-goal-amt {
   position            : absolute;
   bottom              : 10px;
   right               : 20px;
   font-family         : "PublicaPlay-UltraLight", Helvetica, Arial, serif;
   font-size           : 26.0px;
   color               :#ffffff;
-} */
-
-
-
-.teal {
-  width: 327px;
-  height: 152px;
-  background-image: linear-gradient(to left, #182664, #2cc0c8);
 }
-
-.-toward-6000 {
-  margin-left: 77px;
-  width: 261px;
-  height: 28px;
- font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
-  font-size: 18px;
-  font-weight: normal;
-  font-style: italic;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #2cc0c8;
-}
+/* end goal cards */
 
 
-.daysRemaining {
-  margin-left: 80px;
-  text-align: center;
-  padding: 20px;
-  width: 188px;
+
+
+.days-number {
+  text-align: right;
   height: 44px;
   font-family: "PublicaPlay-RegularItalic", Helvetica, Arial, serif;
   font-size: 44px;
   font-weight: normal;
   font-style: italic;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
   color: #2cc0c8;
 }
 
 
-.Days {
+.days-left-text {
   width: 174px;
   height: 33px;
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
   font-size: 30px;
   font-weight: normal;
-  font-style: italic;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  font-style: italic;;
   color: #2cc0c8;
 }
 
@@ -249,6 +210,28 @@ align-self: center;
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
   font-size: 24px;
   margin-left: 249px;
+  font-weight: normal;
+  font-style: italic;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #2cc0c8;
+}
+
+
+.minusTransaction {
+  color: #ff0083;
+}
+.plusTransaction {
+  color: #2cc0c8;
+}
+
+.-toward-6000 {
+  margin-left: 77px;
+  width: 261px;
+  height: 28px;
+ font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
+  font-size: 18px;
   font-weight: normal;
   font-style: italic;
   font-stretch: normal;
