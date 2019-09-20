@@ -215,7 +215,6 @@ align-self: center;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  /* text-align: right; */
   color: #2cc0c8;
 }
 
@@ -234,13 +233,8 @@ align-self: center;
 }
 
 .dailyDays {
-  /* display: block;
-  width: 174px;
-  height: 33px; */
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
   font-size: 18px;
-  /* margin-left: 62px;
-  margin-right: 0; */
   font-weight: normal;
   font-style: italic;
   font-stretch: normal;
@@ -250,7 +244,6 @@ align-self: center;
 }
 
 .weeklyWeeks {
-  /* display: inline-block; */
   width: 174px;
   height: 33px;
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
@@ -281,20 +274,6 @@ align-self: center;
   overflow: hidden;
 }
 
-/* .day, .week {
-  width: 153px;
-  height: 33px;
- font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
-  font-size: 24px;
-  font-weight: 200;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: right;
-  color: #2cc0c8;
-} */
-
  .weeklyGoal{
   float: right;
 
@@ -306,10 +285,6 @@ align-self: center;
 
 .progress-bar {
   margin: 10px 12px 5px 0px;
-  /* margin-left: 12px;
-  margin-right: 12px;
-  margin-top: 10px;
-  margin-bottom: 1px; */
   height: 30px;
 }
 
@@ -376,8 +351,6 @@ align-self: center;
   height: 56px;
   border-radius: 50%;
   margin-top: 35px;
-  /* margin-left: auto;
-  margin-right: auto; */
 }
 
 .add-button {
@@ -414,8 +387,6 @@ align-self: center;
   height              : 50px;
 }
 .someStatement{
-  /* width: 320px;
-  height: 107px; */
   font-family: "PublicaPlay-Medium", Helvetica, Arial, serif;
   font-size: 48px;
   font-style: italic;
@@ -441,9 +412,11 @@ align-self: center;
   font-size:18px;
 }
 
+
+
 .secondStatement, .formQuestion{
   width: 328px;
-  height: 21px;
+  height: 40px;
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
   font-size: 20px;
   font-weight: 800;
@@ -455,6 +428,7 @@ align-self: center;
 }
 .formQuestion{
   font-size: 21px;
+  padding-bottom: 50px;
 }
 .getStartedNow{
   margin-top: 30px;
@@ -496,10 +470,12 @@ align-self: center;
   margin-top: 20px;
 
 }
-.saveGoalButton{
-  /* float:right; */
-  margin-left: 250px;
 
+::placeholder {
+  color: rgb(163,176,190);
+}
+.saveGoalButton{
+  margin-left: 250px;
   font-family: "PublicaPlay-UltraLight", Helvetica, Arial, serif;
   width: 103px;
   height: 40px;
@@ -525,6 +501,7 @@ align-self: center;
 input[type=date] {
   margin-left:3px;
   font-size: 17px;
+  color: rgb(163,176,190);
 }
 
 
@@ -579,8 +556,6 @@ input[type=date] {
 
 .transactionInputDate, .transactionInputAmount {
   padding: 43px;
-  /* padding-top: 10px; */
-  /* margin-top: 10px; */
   margin-bottom: 12px;
 }
 

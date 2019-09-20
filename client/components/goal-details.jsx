@@ -36,7 +36,6 @@ export default class GoalDetails extends React.Component {
     fetch(`/api/goals.php?goal_id=` + currentParam)
 
       .then(res => res.json())
-      // eslint-disable-next-line no-console
       .then(response => {
         this.setState({
           ...response,
@@ -209,7 +208,6 @@ export default class GoalDetails extends React.Component {
     return (
       <div>
         <div className="Transaction-History">Transaction History</div>
-        {/* <div className="Line2"></div> */}
       </div>
     );
   }
